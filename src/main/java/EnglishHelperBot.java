@@ -10,16 +10,18 @@ import java.util.Scanner;
 
 public  class EnglishHelperBot extends TelegramLongPollingBot {
 
-    public static final String BOT_TOKEN = "5968444384:AAHhKT990kcYwv6W7HLJ3uqhXZalO0TzGY8";
+    public static final String BOT_TOKEN = "5903766429:AAGNBtj3oXkL2-d4lwIYkVt2kJY9aeicR_A";
 
-    public static final String BOT_USERNAME = "NASA_picture_test_bot";
-
-    public static final String URI = "https://api.nasa.gov/planetary/apod?api_key=qu3RbJ7SHYNBbsCegaiKEYWJ7hJleu4xaEKRDmT7";
+    public static final String BOT_USERNAME = "English_HelperJ_bot";
 
     public static long chat_id;
+    static Update update2;
     Update updateCash;
-
-    public EnglishHelperBot()  {
+    static String botAnswer;
+    static int menu = 0;
+    InfinitiveGerund case2 = new InfinitiveGerund("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperJ\\EnglishHelperJ\\InfinitiveOrGerund.txt");
+    Phrasal case1 = new Phrasal("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperJ\\EnglishHelperJ\\PhrasalV.txt");
+    public EnglishHelperBot() throws IOException {
     }
 
     public void Start() throws TelegramApiException{
@@ -38,26 +40,59 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        if (update.hasMessage()) {
-            chat_id = update.getMessage().getChatId();
-            BotLogic();
+        update2 = update;
+        if (update2.hasMessage()) {
+            chat_id = update2.getMessage().getChatId();
+            botAnswer = update2.getMessage().getText();
+
+            try {
+                BotLogic();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
-    public void BotLogic(){
-        switch (updateCash.getMessage().getText()) {
-            case "/help":
-                sendMessage("Привет, я English Helper! Я провожу различные тесты на знание английского");
-                break;
-            case "/give":
-                    
-                break;
-            default:
-                sendMessage("Я не понимаю :(");
+    public void BotLogic() throws IOException {
+        if(menu == 0) {
+            switch (botAnswer) {
+                case "/help":
+                    sendMessage("Привет, я English Helper! Я провожу различные тесты на знание английского.");
+                    break;
+                case "/s":
+                    StartTesting();
+                    sendMessage("Для проведения теста по Phrasal verbs, Prepositional phrases, Word patterns Введите '1'\n"+
+                            "Для проведения теста - Инфинитив или Герундий Введите '2'\n"+
+                            "Для завершения теста введите finish\n"+
+                            "Для пропуска вопроса введите next");
+                    menu = 1;
+                    break;
+                default:
+                    sendMessage("Я не понимаю :(");
+            }
+        } else if(menu == 1){
+            switch (botAnswer){
+                case "1":
+                    case1.Start();
+                    break;
+                case "2":
+                    menu = 3;
+                    case2.FileToArray();
+                    case2.StartTest();
+                    case2.showQuestion();
+                    break;
+            }
+        } else if(menu == 3){
+            //case2.showQuestion();
+            if(update2.hasMessage()) {
+                InfinitiveGerund.botInfAnswer = botAnswer;
+                //sendMessage(case2.botInfAnswer+" ");
+                case2.InfGerundTesting();
+            }
         }
     }
 
-    private void sendMessage(String messageText) {
+    public void sendMessage(String messageText) {
         SendMessage message = new SendMessage();
         message.setChatId(chat_id);
         message.setText(messageText);
@@ -68,30 +103,26 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
         }
     }
 
-    static int StartTesting() throws IOException {
-        int testingType;
-        String pathBuff;
+    int StartTesting() throws IOException {
+        //int testingType;
+
         Scanner read = new Scanner(System.in);
         System.out.println("Для проведения теста по Phrasal verbs, Prepositional phrases, Word patterns \nВведите '1'\n");
         System.out.println("Для проведения теста - Инфинитив или Герундий\nВведите '2'");
         System.out.println("Для завершения теста введите finish");
         System.out.println("Для пропуска вопроса введите next");
-        testingType = read.nextInt();
+        //testingType = read.nextInt();
 
 
-        switch(testingType){ //Вызывается метод для определения типа теста
-            case 1:
-                pathBuff = "C:\\Users\\Odd\\IdeaProjects\\EnglishHelperJ\\EnglishHelperJ\\PhrasalV.txt";
-                Phrasal case1 = new Phrasal(pathBuff);
+        /*switch(botAnswer){ //Вызывается метод для определения типа теста
+            case "1":
                 case1.Start();
                 break;
 
-            case 2:
-                pathBuff = "C:\\Users\\Odd\\IdeaProjects\\EnglishHelperJ\\EnglishHelperJ\\InfinitiveOrGerund.txt";
-                InfinitiveGerund case2 = new InfinitiveGerund(pathBuff);
+            case "2":
                 case2.Start();
                 break;
-        }
+        }*/
         return 0;
     }
 }

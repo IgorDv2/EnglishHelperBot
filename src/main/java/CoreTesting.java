@@ -1,4 +1,7 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.Scanner;
 
@@ -16,6 +19,15 @@ public class CoreTesting {
     protected int TestingType = 0;				//хранит число, соответствующее типу тестирования
     String DataFilePath;                                           //0-тест закончен
                                                 //1-тест на знание фразовых конструкций
+    static EnglishHelperBot sendbot;
+
+    static {
+        try {
+            sendbot = new EnglishHelperBot();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     CoreTesting(String path) throws IOException {
         DataFilePath=path;
@@ -123,10 +135,13 @@ public class CoreTesting {
     }
 
 
-    String getAnswer() {
+    static String getAnswer(String botanswer) {
         String answer;
-        Scanner read = new Scanner(System.in);
-        answer=read.nextLine();
+        //sendbot.sendMessage("Getting Answer");
+        //sendbot.sendMessage(botanswer);
+        //Scanner read = new Scanner(System.in);
+        //answer=read.nextLine();
+        answer = botanswer;
         return answer;
     }
 
@@ -139,6 +154,7 @@ public class CoreTesting {
         String commandNext = "next";
 
         if (answer.equals(rightAnswer)) {
+            sendbot.sendMessage("Correct");
             System.out.println("Correct\n");
             return 1;
         }
@@ -152,6 +168,7 @@ public class CoreTesting {
         }
 
         else {
+            sendbot.sendMessage("INCORRECT");
             System.out.println("INCORRECT\n");
             return 2;
         }
@@ -159,20 +176,32 @@ public class CoreTesting {
     }
     public int TestingSummery()
     {
+        String buff1, buff2;
+
         System.out.println("Всего "+ErrorsNumber+" ошибок  в "+QuestionNumber+" вопросах");
-        System.out.println("Ошибки:\n");
+        System.out.println("*Ошибки:\n");
+        sendbot.sendMessage("Всего "+ErrorsNumber+" ошибок  в "+QuestionNumber+" вопросах\n"+
+                "Ошибки:\n");
+
 
         for (int i = 0; i < WrongIndex; i++) {							//выдает на экран все правильные фразы в которых была допущена ошибка
+            buff1=String.valueOf(QuestionArr[WrongAnswer[i]]);
+            buff2=String.valueOf(AnswerArr[WrongAnswer[i]]);
             System.out.print(QuestionArr[WrongAnswer[i]]);
             System.out.println(AnswerArr[WrongAnswer[i]]);
+            sendbot.sendMessage(buff1+" "+buff2);
         }
 
 
-        System.out.println("\nПропущенные вопросы:\n");
+        System.out.println("\n*Пропущенные вопросы:\n");
+        sendbot.sendMessage("Пропущенные вопросы:");
 
         for (int x = 0; x < MissedIndex; x++) {							//выдает на экран все фразы, которые были пропущены
+            buff1=String.valueOf(QuestionArr[MissedQuestions[x]]);
+            buff2=String.valueOf(AnswerArr[MissedQuestions[x]]);
             System.out.print(QuestionArr[MissedQuestions[x]]);
             System.out.println(AnswerArr[MissedQuestions[x]]);
+            sendbot.sendMessage(buff1+" "+buff2);
         }
 
         return 0;

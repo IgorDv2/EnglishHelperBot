@@ -1,6 +1,7 @@
 import java.io.IOException;
 
 public class Phrasal extends CoreTesting{
+    static String botPhraseAnswer;
     Phrasal(String path) throws IOException {
         super(path);
     }
@@ -30,7 +31,7 @@ public class Phrasal extends CoreTesting{
             activeQuestion = String.copyValueOf(QuestionArr[RandomNumberArrPointer[activeQuestionNumber]]);				//числу, лежащему в массиве случайных числел
 
             System.out.println(activeQuestion+"___");
-            typeCommand = checkAnswer(getAnswer(), activeAnswer);									//проверка правильного ответа
+            typeCommand = checkAnswer(getAnswer(botPhraseAnswer), activeAnswer);									//проверка правильного ответа
 
                 if (typeCommand == 1) {                                                             //при правильном ответе выводится новая строка
                 activeQuestionNumber++;
