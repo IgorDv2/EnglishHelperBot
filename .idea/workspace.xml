@@ -10,7 +10,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/CoreTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoreTesting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Phrasal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Phrasal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +79,14 @@
       <option name="presentableId" value="Default" />
       <updated>1674238769780</updated>
     </task>
+    <task id="LOCAL-00001" summary="Привел в порядок имена переменныхдобавил коментарии и удалил лишние комментарии">
+      <created>1674411552851</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1674411552851</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -97,7 +105,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Отображение_результатов_в_боте" />
+                        <option value="Заставить_работать_Phrasal_test" />
                       </list>
                     </value>
                   </entry>
@@ -108,5 +116,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Привел в порядок имена переменныхдобавил коментарии и удалил лишние комментарии" />
+    <option name="LAST_COMMIT_MESSAGE" value="Привел в порядок имена переменныхдобавил коментарии и удалил лишние комментарии" />
   </component>
 </project>

@@ -1,36 +1,20 @@
-import java.io.IOException;
-
 public class InfinitiveGerund extends CoreTesting {
     public static void setBotInfAnswer(String botInfAnswer) {
         InfinitiveGerund.botInfAnswer = botInfAnswer;
     }
-
     private static String botInfAnswer = " ";
-    private static EnglishHelperBot sendbot;                //Экземпляр бота для отправки ботом сообщений
-    private static int activeQuestionNumber = 0;            //Номер текущего вопроса
     private boolean isQuestionRepeated = false;             //флаг для проверки повторения вопроса
-    private static int typeCommand = 1;		                //управляющая переменная
 
-    static {
-        try {
-            sendbot = new EnglishHelperBot();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    InfinitiveGerund(String path) throws IOException {
+    InfinitiveGerund(String path) {
         super(path);
+        typeCommand = 1;
     }
 
     void StartTest(){
         sendbot.sendMessage("В случае использования инфинитива введите to\n"+
                 "В случае использования герундия введите ing\n"+
-                "Для пропуска вопроса введите next");
-    }
-    void showQuestion(){                                            //Метод, выводящий вопрос в чат телеграм бота
-        String showActiveQuestion = String.copyValueOf(QuestionArr[RandomNumberArrPointer[activeQuestionNumber]]);
-        sendbot.sendMessage(showActiveQuestion);
+                "Для пропуска вопроса введите /next\n"+
+                "Для завершения теста введите /finish");
     }
 
     int InfGerundTesting(){											//Метод выполняющий одну итерацию тестирования
@@ -55,10 +39,10 @@ public class InfinitiveGerund extends CoreTesting {
 
         if (typeCommand == 2) {                                                                         //Если ответ да неверно
             ErrorsNumber++;                                                                             //плюс к количеству ошибок
-                if (isQuestionRepeated == false) {													//если ошибочный ответ дан первый раз
+            showQuestion();
+            if (isQuestionRepeated == false) {													//если ошибочный ответ дан первый раз
                     WrongAnswer[WrongIndex] = RandomNumberArrPointer[activeQuestionNumber];			//в массив кладется номер текущего вопроса и ответа
                     WrongIndex++;
-                    showQuestion();
                     isQuestionRepeated = true;
                 }
         }
@@ -76,6 +60,10 @@ public class InfinitiveGerund extends CoreTesting {
             showQuestion();
             isQuestionRepeated = false;
         }
+        if(typeCommand == 4) {
+            StartTest();
+            showQuestion();
+        }
 
         IfTestEnds();
 
@@ -89,13 +77,5 @@ public class InfinitiveGerund extends CoreTesting {
         System.out.println(activeQuestionNumber+" of "+QuestionNumber );
         System.out.println(activeQuestion);
         System.out.println(botInfAnswer);
-    }
-
-    private void IfTestEnds(){                                                              //метод определяющий условие завершения теста
-        if (typeCommand == 0|| activeQuestionNumber == QuestionNumber) {				    //цикл заканчивает работу либо при переборе всех строк из файла
-            setTestingType(0);                                                                //либо при вводе finish
-            EnglishHelperBot.setMenu(0);                                                      //меню бота возвращается к 1ому узлу
-            TestingSummery();                                                               //запускается метод, выдающий результаты теста
-        }
     }
 }
