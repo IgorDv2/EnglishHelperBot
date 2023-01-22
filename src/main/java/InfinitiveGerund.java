@@ -1,12 +1,15 @@
 import java.io.IOException;
 
 public class InfinitiveGerund extends CoreTesting {
-    public static String botInfAnswer = " ";
-    static EnglishHelperBot sendbot;
-    static int activeQuestionNumber = 0;
-    boolean isQuestionRepeated = false;
-    static int typeCommand = 1;														        //управляющая переменная
+    public static void setBotInfAnswer(String botInfAnswer) {
+        InfinitiveGerund.botInfAnswer = botInfAnswer;
+    }
 
+    private static String botInfAnswer = " ";
+    private static EnglishHelperBot sendbot;                //Экземпляр бота для отправки ботом сообщений
+    private static int activeQuestionNumber = 0;            //Номер текущего вопроса
+    private boolean isQuestionRepeated = false;             //флаг для проверки повторения вопроса
+    private static int typeCommand = 1;		                //управляющая переменная
 
     static {
         try {
@@ -22,84 +25,77 @@ public class InfinitiveGerund extends CoreTesting {
 
     void StartTest(){
         sendbot.sendMessage("В случае использования инфинитива введите to\n"+
-                "В случае использования инфинитива введите ing");
-
-        //FileToArray();
-        //InfGerundTesting();
-        //TestingSummery();
+                "В случае использования герундия введите ing\n"+
+                "Для пропуска вопроса введите next");
     }
-    void showQuestion(){
+    void showQuestion(){                                            //Метод, выводящий вопрос в чат телеграм бота
         String showActiveQuestion = String.copyValueOf(QuestionArr[RandomNumberArrPointer[activeQuestionNumber]]);
         sendbot.sendMessage(showActiveQuestion);
     }
 
-    int InfGerundTesting(){													                //основной метод для запуска теста{
-        String buff;													//индекс вопросса/ответа в порядке их выведения
-        String activeAnswer;																//строковый буфер для проверки правильности ответа
-        String activeQuestion;																//строковый буфер для текущего вопроса
+    int InfGerundTesting(){											//Метод выполняющий одну итерацию тестирования
+        String stringBuffer;									    //Буффер для строки
+        String activeAnswer;                                        //Буфер строки ответа
 
-        												//переменная для повторяющегося неверного ответа
+        IfTestEnds();
 
-        //System.out.println(QuestionNumber);
-       // for (;;) {
+        activeAnswer = String.copyValueOf(AnswerArr[RandomNumberArrPointer[activeQuestionNumber]]);					//в буфер помещаются строки, соответствующие случайному
 
-            if (typeCommand == 0|| activeQuestionNumber == QuestionNumber) {						//цикл заканчивает работу либо при переборе всех строк из файла
-                TestingType = 0;
-                EnglishHelperBot.menu = 0;
-                TestingSummery();
-                //break;																				//либо если методом проверки возвращен 0
-            }
+        //ConsoleAnswerCheck();
 
-            activeAnswer = String.copyValueOf(AnswerArr[RandomNumberArrPointer[activeQuestionNumber]]);					//в буфер помещаются строки, соответствующие случайному
-            activeQuestion = String.copyValueOf(QuestionArr[RandomNumberArrPointer[activeQuestionNumber]]);				//числу, лежащему в массиве случайных числел
-            //showQuestion();
-            System.out.println(activeQuestionNumber+" of "+QuestionNumber );
-            System.out.println(activeQuestion);
-            //sendbot.sendMessage(activeQuestion);
-            System.out.println(botInfAnswer);
-            //sendbot.sendMessage(botInfAnswer);
+        typeCommand = checkAnswer(getAnswer(botInfAnswer), activeAnswer);	                            //сверка введенного ответа с правильным ответом
 
-        typeCommand = checkAnswer(getAnswer(botInfAnswer), activeAnswer);									//проверка правильного ответа
-            //при правильном ответе выводится новая строка
-        if (typeCommand == 0) {						//цикл заканчивает работу либо при переборе всех строк из файла
-            TestingType = 0;
-            EnglishHelperBot.menu = 0;
-            TestingSummery();
-            //break;																				//либо если методом проверки возвращен 0
+        IfTestEnds();
+
+        if (typeCommand == 1) {                                                                         //Если ответ дан правильно
+            activeQuestionNumber++;                                                                     //следующий вопрос
+            showQuestion();                                                                             //следующий вопрос отображает бот
+            isQuestionRepeated = false;
         }
 
-        if (typeCommand == 1) {
-                activeQuestionNumber++;
-                showQuestion();
-                isQuestionRepeated = false;
-            }
-
-            if (typeCommand == 2) {
-                ErrorsNumber++;
+        if (typeCommand == 2) {                                                                         //Если ответ да неверно
+            ErrorsNumber++;                                                                             //плюс к количеству ошибок
                 if (isQuestionRepeated == false) {													//если ошибочный ответ дан первый раз
                     WrongAnswer[WrongIndex] = RandomNumberArrPointer[activeQuestionNumber];			//в массив кладется номер текущего вопроса и ответа
                     WrongIndex++;
                     showQuestion();
                     isQuestionRepeated = true;
                 }
+        }
 
+        if (typeCommand == 3) {																			//в случае пропуска вопроса:
+            stringBuffer = String.copyValueOf(AnswerArr[RandomNumberArrPointer[activeQuestionNumber]]);
+            System.out.println(AnswerArr[RandomNumberArrPointer[activeQuestionNumber]]);
 
-            }
+            showQuestion();
+            sendbot.sendMessage(stringBuffer);                                                          //выводится правилный ответ
+            ErrorsNumber++;
+            MissedQuestions[MissedIndex] = RandomNumberArrPointer[activeQuestionNumber];				//в масив кладется номер текущего вопроса и ответа
+            MissedIndex++;
+            activeQuestionNumber++;                                                                     //следующий вопрос
+            showQuestion();
+            isQuestionRepeated = false;
+        }
 
-            if (typeCommand == 3) {																			//в случае пропуска вопроса - выводится правильный ответ
-                buff = String.copyValueOf(AnswerArr[RandomNumberArrPointer[activeQuestionNumber]]);
-                System.out.println(AnswerArr[RandomNumberArrPointer[activeQuestionNumber]]);				//и после выводится новая строка
-                showQuestion();
-                sendbot.sendMessage(buff);
-                ErrorsNumber++;
-                MissedQuestions[MissedIndex] = RandomNumberArrPointer[activeQuestionNumber];				//в масив кладется номер текущего вопроса и ответа
-                MissedIndex++;
-                activeQuestionNumber++;
-                showQuestion();
-                isQuestionRepeated = false;
-            }
-       // }
+        IfTestEnds();
 
         return 0;
+    }
+
+
+    private void ConsoleAnswerCheck(){
+        String activeQuestion;
+        activeQuestion = String.copyValueOf(QuestionArr[RandomNumberArrPointer[activeQuestionNumber]]);				//числу, лежащему в массиве случайных числел
+        System.out.println(activeQuestionNumber+" of "+QuestionNumber );
+        System.out.println(activeQuestion);
+        System.out.println(botInfAnswer);
+    }
+
+    private void IfTestEnds(){                                                              //метод определяющий условие завершения теста
+        if (typeCommand == 0|| activeQuestionNumber == QuestionNumber) {				    //цикл заканчивает работу либо при переборе всех строк из файла
+            setTestingType(0);                                                                //либо при вводе finish
+            EnglishHelperBot.setMenu(0);                                                      //меню бота возвращается к 1ому узлу
+            TestingSummery();                                                               //запускается метод, выдающий результаты теста
+        }
     }
 }
