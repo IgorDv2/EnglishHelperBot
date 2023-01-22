@@ -1,14 +1,11 @@
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws IOException, TelegramApiException {
         EnglishHelperBot bot = new EnglishHelperBot();
-        bot.Start();
+        bot.Start();                                                //Подключение к телеграм боту
     }
-
-
 }
