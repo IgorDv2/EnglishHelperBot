@@ -73,10 +73,12 @@ public class Phrasal extends CoreTesting{
         String showActiveQuestion = String.copyValueOf(QuestionArr[RandomNumberArrPointer[activeQuestionNumber]])+" ___";
         sendbot.sendMessage(showActiveQuestion);
     }
-    private void ConsoleAnswerCheck(){
+
+
+    private void ConsoleAnswerCheck() {
         String activeQuestion;
-        activeQuestion = String.copyValueOf(QuestionArr[RandomNumberArrPointer[activeQuestionNumber]]);				//числу, лежащему в массиве случайных числел
-        System.out.println(activeQuestionNumber+" of "+QuestionNumber );
+        activeQuestion = String.copyValueOf(QuestionArr[RandomNumberArrPointer[activeQuestionNumber]]);                //числу, лежащему в массиве случайных числел
+        System.out.println(activeQuestionNumber + " of " + QuestionNumber);
         System.out.println(activeQuestion);
         System.out.println(botPhraseAnswer);
     }

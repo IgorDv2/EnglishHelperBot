@@ -40,7 +40,7 @@ public class InfinitiveGerund extends CoreTesting {
         if (typeCommand == 2) {                                                                         //Если ответ да неверно
             ErrorsNumber++;                                                                             //плюс к количеству ошибок
             showQuestion();
-            if (isQuestionRepeated == false) {													//если ошибочный ответ дан первый раз
+            if (isQuestionRepeated == false) {													    //если ошибочный ответ дан первый раз
                     WrongAnswer[WrongIndex] = RandomNumberArrPointer[activeQuestionNumber];			//в массив кладется номер текущего вопроса и ответа
                     WrongIndex++;
                     isQuestionRepeated = true;
