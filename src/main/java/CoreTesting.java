@@ -27,6 +27,7 @@ public class CoreTesting {
             throw new RuntimeException(e);
         }
     }
+    protected int arrIndex = 0;
 
     public static void setTestingType(int testingType) {
         TestingType = testingType;
@@ -43,11 +44,10 @@ public class CoreTesting {
 
     public int FileToArray() throws IOException {
 
-        int answerIndexChar;                                    //Индекс
         int characterNumber;                                     //Буфер для длинны строки
         String bufferString;
-        String QuestionBuff;                                    //Буфер строки вопроса
-        String AnswerBuff;                                      //Буфер строки ответа
+
+
 
         File DataFile = new File(DataFilePath);
         FileReader fr = new FileReader(DataFile);
@@ -63,35 +63,17 @@ public class CoreTesting {
             characterNumber = bufferString.length();
             QuestionArr[QuestionNumber] = bufferString.toCharArray();                                    //кладем строку в массив посимвольно
 
-            for (int x = 0; x < characterNumber; x++) {                                                    //цикл для определения "зоны ответа"
-                if ((QuestionArr[QuestionNumber][x] == '\t')) {                                            //табуляция указывает на то, что после нее искомый для данной строчки предлог
-                    QuestionArr[QuestionNumber][x] = ' ';                                                //убераем табуляцию
-                    x++;
-                    answerIndexChar = 0;                                                                //обнуляем счетчик начального символа "ответа"
-                    AnswerBuff = "";
-                    QuestionBuff = "";
+            for (; arrIndex < characterNumber; arrIndex++) {                                                    //цикл для определения "зоны ответа"
+                if ((QuestionArr[QuestionNumber][arrIndex] == '\t')) {                                            //табуляция указывает на то, что после нее искомый для данной строчки предлог
+                    QuestionArr[QuestionNumber][arrIndex] = ' ';                                                //убераем табуляцию
+                    arrIndex++;
 
-                    for (int y = 0; y < x; y++) {
-                        QuestionBuff += Character.toString(QuestionArr[QuestionNumber][y]);               //Конкатенацией собирается строка ответа по символьно до индекса табуляции
-                    }
-
-                    QuestionBuff += " ";
-
-                    while (x < characterNumber) {                                                            //пока текущая строка не закончится
-                        AnswerArr[QuestionNumber][answerIndexChar] = QuestionArr[QuestionNumber][x];        //кладем предлог в массив для ответов посимвольно
-                        AnswerBuff += Character.toString(AnswerArr[QuestionNumber][answerIndexChar]);         //Конкатенацией собираем строку ответа
-
-                        x++;
-                        answerIndexChar++;
-
-                    }
-
-                    AnswerArr[QuestionNumber] = AnswerBuff.toCharArray();
-                    QuestionArr[QuestionNumber] = QuestionBuff.toCharArray();
+                    ;
+                    QuestionWriting(AnswerWriting(characterNumber));
 
                 }
-
             }
+            arrIndex = 0;
 
             if (QuestionArr[QuestionNumber][0] != '\n' && QuestionArr[QuestionNumber][0] != 0 && QuestionArr[QuestionNumber][0] != '*')  //это условие позволяет пропускать пустые строки и строки, начинающиеся с *
                 QuestionNumber++;                                                                                                     //только при соблюдения этого условия, идет запись следующей строки в массив
@@ -214,11 +196,40 @@ public class CoreTesting {
     }
 
     protected void IfTestEnds() {                                                              //метод определяющий условие завершения теста
-        if ((typeCommand == 0 || activeQuestionNumber == QuestionNumber)&&!TestingEndFlag) {                    //цикл заканчивает работу либо при переборе всех строк из файла
+        if ((typeCommand == 0 || activeQuestionNumber == (QuestionNumber-1))&&!TestingEndFlag) {                    //цикл заканчивает работу либо при переборе всех строк из файла
             setTestingType(0);                                                                //либо при вводе finish
             EnglishHelperBot.setMenu(0);                                                      //меню бота возвращается к 1ому узлу
             TestingEndFlag = true;
             TestingSummery();                                                                  //запускается метод, выдающий результаты теста
         }
+    }
+
+    static void answerBeforeOrAfterQuestion(){
+        boolean answerAfter = true;
+        if(true){
+        }
+    }
+    void QuestionWriting(int questionEnd){
+        String QuestionBuff = "";                                    //Буфер строки вопроса
+        for (int y = 0; y < questionEnd; y++) {
+            QuestionBuff += Character.toString(QuestionArr[QuestionNumber][y]);               //Конкатенацией собирается строка ответа по символьно до индекса табуляции
+        }
+        QuestionBuff += " ";
+        QuestionArr[QuestionNumber] = QuestionBuff.toCharArray();
+        //System.out.println(QuestionBuff);
+    }
+    int AnswerWriting(int characterNumber){
+        String AnswerBuff = "";                                     //Буфер строки ответа
+        int answerIndexChar = 0;                                    //Индекс
+        int questionEnd = arrIndex;
+        while (arrIndex < characterNumber) {                                                            //пока текущая строка не закончится
+            AnswerArr[QuestionNumber][answerIndexChar] = QuestionArr[QuestionNumber][arrIndex];        //кладем предлог в массив для ответов посимвольно
+            AnswerBuff += Character.toString(AnswerArr[QuestionNumber][answerIndexChar]);         //Конкатенацией собираем строку ответа
+            arrIndex++;
+            answerIndexChar++;
+        }
+        AnswerArr[QuestionNumber] = AnswerBuff.toCharArray();
+        //System.out.println(AnswerArr[QuestionNumber]);
+        return questionEnd;
     }
 }
