@@ -4,6 +4,15 @@ public class InfinitiveGerund extends CoreTesting {
     }
     private static String botInfAnswer = " ";
     private boolean isQuestionRepeated = false;             //флаг для проверки повторения вопроса
+    public static boolean getIsArrayDone() {
+        return IsArrayDone;
+    }
+
+    public static void setIsArrayDone(boolean isArrayDone) {
+        InfinitiveGerund.IsArrayDone = isArrayDone;
+    }
+
+    private static boolean IsArrayDone = false;
 
     InfinitiveGerund(String path) {
         super(path);
@@ -21,20 +30,22 @@ public class InfinitiveGerund extends CoreTesting {
         String stringBuffer;									    //Буффер для строки
         String activeAnswer;                                        //Буфер строки ответа
 
-        IfTestEnds();
-
         activeAnswer = String.copyValueOf(AnswerArr[RandomNumberArrPointer[activeQuestionNumber]]);					//в буфер помещаются строки, соответствующие случайному
+        typeCommand = checkAnswer(botInfAnswer, activeAnswer);	                            //сверка введенного ответа с правильным ответом
 
-        //ConsoleAnswerCheck();
-
-        typeCommand = checkAnswer(getAnswer(botInfAnswer), activeAnswer);	                            //сверка введенного ответа с правильным ответом
-
-        IfTestEnds();
+        if(typeCommand == 0){
+            TestEnd();
+            return 0;
+        }
 
         if (typeCommand == 1) {                                                                         //Если ответ дан правильно
             activeQuestionNumber++;                                                                     //следующий вопрос
-            showQuestion();                                                                             //следующий вопрос отображает бот
+            if(activeQuestionNumber == QuestionNumber) {
+                TestEnd();
+                return 0;
+            }
             isQuestionRepeated = false;
+            showQuestion();                                                                             //следующий вопрос отображает бот
         }
 
         if (typeCommand == 2) {                                                                         //Если ответ да неверно
@@ -57,15 +68,17 @@ public class InfinitiveGerund extends CoreTesting {
             MissedQuestions[MissedIndex] = RandomNumberArrPointer[activeQuestionNumber];				//в масив кладется номер текущего вопроса и ответа
             MissedIndex++;
             activeQuestionNumber++;                                                                     //следующий вопрос
-            showQuestion();
             isQuestionRepeated = false;
+            if(activeQuestionNumber == QuestionNumber) {
+                TestEnd();
+                return 0;
+            }
+            showQuestion();
         }
         if(typeCommand == 4) {
             StartTest();
             showQuestion();
         }
-
-        IfTestEnds();
 
         return 0;
     }

@@ -6,9 +6,19 @@ public class Phrasal extends CoreTesting{
     private static String botPhraseAnswer = " ";
     private boolean isQuestionRepeated = false;             //флаг для проверки повторения вопроса
 
+    public static boolean getIsArrayDone() {
+        return IsArrayDone;
+    }
+
+    public static void setIsArrayDone(boolean isArrayDone) {
+        Phrasal.IsArrayDone = isArrayDone;
+    }
+
+    private static boolean IsArrayDone = false;
+
     Phrasal(String path) {
         super(path);
-        typeCommand = 1;
+        typeCommand = -1;
     }
 
     void StartTest(){
@@ -20,20 +30,21 @@ public class Phrasal extends CoreTesting{
         String stringBuffer;									    //Буффер для строки
         String activeAnswer;                                        //Буфер строки ответа
 
-        IfTestEnds();
-
         activeAnswer = String.copyValueOf(AnswerArr[RandomNumberArrPointer[activeQuestionNumber]]);					//в буфер помещаются строки, соответствующие случайному
+        typeCommand = checkAnswer(botPhraseAnswer, activeAnswer);	                            //сверка введенного ответа с правильным ответом
 
-        //ConsoleAnswerCheck();
-
-        typeCommand = checkAnswer(getAnswer(botPhraseAnswer), activeAnswer);	                            //сверка введенного ответа с правильным ответом
-
-        IfTestEnds();
-
+        if(typeCommand == 0){
+            TestEnd();
+            return 0;
+        }
         if (typeCommand == 1) {                                                                         //Если ответ дан правильно
-            activeQuestionNumber++;                                                                     //следующий вопрос
+            activeQuestionNumber++;
+            isQuestionRepeated = false;                                                                  //следующий вопрос
+            if(activeQuestionNumber == QuestionNumber) {
+                TestEnd();
+                return 0;
+            }
             showQuestion();                                                                             //следующий вопрос отображает бот
-            isQuestionRepeated = false;
         }
 
         if (typeCommand == 2) {                                                                         //Если ответ да неверно
@@ -56,21 +67,22 @@ public class Phrasal extends CoreTesting{
             MissedQuestions[MissedIndex] = RandomNumberArrPointer[activeQuestionNumber];				//в масив кладется номер текущего вопроса и ответа
             MissedIndex++;
             activeQuestionNumber++;                                                                     //следующий вопрос
-            showQuestion();
             isQuestionRepeated = false;
+            if(activeQuestionNumber == QuestionNumber) {
+                TestEnd();
+                return 0;
+            }
+            showQuestion();
         }
         if(typeCommand == 4) {
             StartTest();
             showQuestion();
         }
-
-        IfTestEnds();
-
         return 0;
     }
     @Override
     void showQuestion() {                                            //Метод, выводящий вопрос в чат телеграм бота
-        String showActiveQuestion = String.copyValueOf(QuestionArr[RandomNumberArrPointer[activeQuestionNumber]])+" ___";
+        String showActiveQuestion = String.copyValueOf(QuestionArr[RandomNumberArrPointer[activeQuestionNumber]]);
         sendbot.sendMessage(showActiveQuestion);
     }
 

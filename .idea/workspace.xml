@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="Phrasal Test корректно работает в телеграм боте">
+    <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="Вынес запись ответа и вопроса из текстового файла в отдельные методы AnswerWriting и QuestionWriting соответственно.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CoreTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoreTesting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Phrasal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Phrasal.java" afterDir="false" />
     </list>
@@ -18,7 +19,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Отображение_результатов_в_боте" />
+        <entry key="$PROJECT_DIR$" value="Заставить_работать_Phrasal_test" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -91,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674416833812</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Вынес запись ответа и вопроса из текстового файла в отдельные методы AnswerWriting и QuestionWriting соответственно.">
+      <created>1674686550714</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1674686550714</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -110,7 +118,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -125,6 +133,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Привел в порядок имена переменныхдобавил коментарии и удалил лишние комментарии" />
     <MESSAGE value="Phrasal Test корректно работает в телеграм боте" />
-    <option name="LAST_COMMIT_MESSAGE" value="Phrasal Test корректно работает в телеграм боте" />
+    <MESSAGE value="Вынес запись ответа и вопроса из текстового файла в отдельные методы AnswerWriting и QuestionWriting соответственно." />
+    <option name="LAST_COMMIT_MESSAGE" value="Вынес запись ответа и вопроса из текстового файла в отдельные методы AnswerWriting и QuestionWriting соответственно." />
   </component>
 </project>
