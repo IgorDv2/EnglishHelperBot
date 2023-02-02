@@ -26,8 +26,8 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
     private static long chat_id;
     private static Update updateBuffer;                                 //Буфер для апдейтов чата
     private static String answerToBot;                                  //Буфер для строки ввода пользователя
-    private Phrasal case1 = new Phrasal("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperJ\\EnglishHelperJ\\PhrasalV.txt");
-    private InfinitiveGerund case2 = new InfinitiveGerund("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperJ\\EnglishHelperJ\\InfinitiveOrGerund.txt");
+    private Phrasal case1 = new Phrasal("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\PhrasalVtest.txt");
+    private InfinitiveGerund case2 = new InfinitiveGerund("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\InfinitiveOrGerund.txt");
 
     public EnglishHelperBot() throws IOException {
     }
@@ -85,6 +85,7 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
                 case "1":
                     setMenu(2);                                 //При запуске теста
                     if(Phrasal.getIsArrayDone() == false) {
+                        case1.setTestingType("Phrasal");
                         case1.FileToArray();                    //Создается массив рандомизированных вопросов на основе текстового файла
                         Phrasal.setIsArrayDone(true);
                     }
@@ -95,6 +96,7 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
                 case "2":
                     setMenu(3);                                 //При запуске теста
                     if(InfinitiveGerund.getIsArrayDone() == false) {
+                        case1.setTestingType("InfinitiveGerund");
                         case2.FileToArray();                        //Создается массив рандомизированных вопросов на основе текстового файла
                         InfinitiveGerund.setIsArrayDone(true);
                     }

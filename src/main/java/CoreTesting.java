@@ -27,9 +27,19 @@ public class CoreTesting {
             throw new RuntimeException(e);
         }
     }
+
     protected int typeCommand = 1;                                        //управляющая переменная
     protected String DataFilePath;                                          //Строка для хранения пути к текстовому файлу с вопросами
 
+    public static String getTestingType() {
+        return TestingType;
+    }
+
+    public static void setTestingType(String testingType) {
+        TestingType = testingType;
+    }
+
+    protected static String TestingType;
 
     CoreTesting(String path) {                           //Конструктор принимает строку с путем к файлу
         DataFilePath = path;
@@ -97,6 +107,7 @@ public class CoreTesting {
         }
         return 0;
     }
+
     int checkAnswer(String answer, String rightAnswer) {
 //Принимает результат ввода и возвращает 1 при правельном ответе,
 //2 при неправильном
@@ -115,7 +126,7 @@ public class CoreTesting {
             return 0;
         } else if (answer.equals(commandNext)) {
             return 3;
-        }else if(answer.equals(commandHelp)){
+        } else if (answer.equals(commandHelp)) {
             return 4;
         } else {
             sendbot.sendMessage("INCORRECT");
@@ -143,7 +154,7 @@ public class CoreTesting {
             return 0;
         } else if (answer.equals(commandNext)) {
             return 3;
-        }else if(answer.equals(commandHelp)){
+        } else if (answer.equals(commandHelp)) {
             return 4;
         } else {
             sendbot.sendMessage("INCORRECT");
@@ -195,7 +206,7 @@ public class CoreTesting {
         sendbot.sendMessage(showActiveQuestion);
     }
 
-    protected void TestEnd(){
+    protected void TestEnd() {
         TestingSummery();
         EnglishHelperBot.setMenu(0);
         WrongIndex = 0;
@@ -206,44 +217,49 @@ public class CoreTesting {
 
     }
 
-    void QuestionAndAnswerWriting(int characterNumber){
+    void QuestionAndAnswerWriting(int characterNumber) {
         int activeCharacterIndex = 0;
         String QuestionBuff = "";
         String AnswerBuff = "";
         boolean isAnswer = false;
+        boolean inbetweenAnswer = false;
 
         System.out.print(QuestionArr[QuestionNumber]);
-        System.out.println( " "+ QuestionArr[QuestionNumber].length);
-        for(;activeCharacterIndex < characterNumber; activeCharacterIndex++){
-
-            if((QuestionArr[QuestionNumber][activeCharacterIndex] == '\t')){
+        System.out.println(" " + QuestionArr[QuestionNumber].length);
+        for (; activeCharacterIndex < characterNumber; activeCharacterIndex++) {
+            if ((QuestionArr[QuestionNumber][activeCharacterIndex] == '\t')) {
                 QuestionArr[QuestionNumber][activeCharacterIndex] = ' ';
                 activeCharacterIndex++;
 
-                for(;activeCharacterIndex < characterNumber; activeCharacterIndex++){
-                    if(QuestionArr[QuestionNumber][activeCharacterIndex] == ' ') {
+                for (; activeCharacterIndex < characterNumber; activeCharacterIndex++) {
+                    if (QuestionArr[QuestionNumber][activeCharacterIndex] == ' ') {
                         isAnswer = true;
+                        inbetweenAnswer = true;
                         break;
                     }
                     AnswerBuff += Character.toString(QuestionArr[QuestionNumber][activeCharacterIndex]);
-                    System.out.println(AnswerBuff+" "+activeCharacterIndex+" ("+characterNumber+")");
+                    System.out.println(AnswerBuff + " " + activeCharacterIndex + " (" + characterNumber + ")");
                 }
 
                 AnswerArr[QuestionNumber] = AnswerBuff.toCharArray();
                 System.out.print(AnswerBuff);
-                System.out.println(" "+AnswerBuff.length());
+                System.out.println(" " + AnswerBuff.length());
                 continue;
             }
 
-            if(isAnswer == true) {
+            if (isAnswer == true) {
                 System.out.println("isAnswer");
                 QuestionBuff += " ___ ";
                 isAnswer = false;
             }
-                QuestionBuff += Character.toString(QuestionArr[QuestionNumber][activeCharacterIndex]);
-                System.out.println(QuestionBuff);
+            QuestionBuff += Character.toString(QuestionArr[QuestionNumber][activeCharacterIndex]);
+            System.out.println(QuestionBuff);
+        }
+        if (inbetweenAnswer == false && getTestingType().equals("Phrasal")) {
+                QuestionBuff += " ___ ";
         }
         QuestionArr[QuestionNumber] = QuestionBuff.toCharArray();
     }
 
 }
+
