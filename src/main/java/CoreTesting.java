@@ -38,11 +38,7 @@ public class CoreTesting {
     public int FileToArray() throws IOException {
 
         int characterNumber;                                     //Буфер для длинны строки
-
         String bufferString;
-
-
-
 
         File DataFile = new File(DataFilePath);
         FileReader fr = new FileReader(DataFile);
@@ -66,8 +62,6 @@ public class CoreTesting {
             bufferString = reader.readLine();                                                                                         //Считывается следующая строка из файла
 
         }
-
-        //Randomize();                                                                                                                   //сразу после созданияя массивов с вопросами и ответами - формируется массив случайных чисел
         return 0;
     }
 
@@ -114,6 +108,34 @@ public class CoreTesting {
         String commandHelp = "/help";
 
         if (answer.equals(rightAnswer)) {
+            sendbot.sendMessage("Correct");
+            System.out.println("Correct\n");
+            return 1;
+        } else if (answer.equals(commandFinish)) {
+            return 0;
+        } else if (answer.equals(commandNext)) {
+            return 3;
+        }else if(answer.equals(commandHelp)){
+            return 4;
+        } else {
+            sendbot.sendMessage("INCORRECT");
+            System.out.println("INCORRECT\n");
+            return 2;
+        }
+
+    }
+
+    int checkAnswer(String answer, String rightAnswer1, String rightAnswer2) {
+//Принимает результат ввода и возвращает 1 при правельном ответе,
+//2 при неправильном
+//3 при введении команды "next" - для пропуска вопроса и выведения правильного ответа
+//и 0 при команде finish
+
+        String commandFinish = "/finish";
+        String commandNext = "/next";
+        String commandHelp = "/help";
+
+        if (answer.equals(rightAnswer1) || answer.equals(rightAnswer2)) {
             sendbot.sendMessage("Correct");
             System.out.println("Correct\n");
             return 1;

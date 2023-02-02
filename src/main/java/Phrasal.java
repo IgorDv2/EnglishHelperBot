@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.StringUtils;
+
 public class Phrasal extends CoreTesting{
 
     public static void setBotPhraseAnswer(String botInfAnswer) {
@@ -27,11 +29,21 @@ public class Phrasal extends CoreTesting{
     }
     int PhrasalTesting()
     {													                                    //основной метод для запуска теста{
-        String stringBuffer;									    //Буффер для строки
-        String activeAnswer;                                        //Буфер строки ответа
+        String stringBuffer;									                            //Буффер для строки
+        String activeAnswer;                                                                //Буфер строки ответа
+        String activeAnswer1;
+        String activeAnswer2;
+        String[] result;
 
         activeAnswer = String.copyValueOf(AnswerArr[RandomNumberArrPointer[activeQuestionNumber]]);					//в буфер помещаются строки, соответствующие случайному
-        typeCommand = checkAnswer(botPhraseAnswer, activeAnswer);	                            //сверка введенного ответа с правильным ответом
+        if (activeAnswer.contains("/")) {
+                result = StringUtils.split(activeAnswer, "/");
+                activeAnswer1 = result[0];
+                activeAnswer2 = result[1];
+            typeCommand = checkAnswer(botPhraseAnswer, activeAnswer1, activeAnswer2);
+        }
+        else
+            typeCommand = checkAnswer(botPhraseAnswer, activeAnswer);	                                                //сверка введенного ответа с правильным ответом
 
         if(typeCommand == 0){
             TestEnd();

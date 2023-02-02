@@ -1,0 +1,232 @@
+*ON
+продолжать|    carry	on
+keen	on
+сесть на поезд(автобус, корабль)|   get	on
+быть в хороших отношения|   get	on
+залогиниться|    log	on
+комментировать что-то|   comment	on
+decide	on
+потратить на|    spend	on
+включить|   turn	on
+что-то происходит, случилось|   go	on
+в зависимости|    depend	on
+набрать вес|    put	on
+носить на себе|    have	on
+надеть|    put	on
+примерить|    try	on
+an influence	on
+
+*OUT
+поесть в ресторане|    eat	out
+зачеркнуть|    cross	out
+обратить чье-либо внимание на что-то важное|   point	out
+зачитать на аудиторию|   read	out
+затереть ластиком|   rub	out
+выйти из машины(здания, комнаты)|   get	out
+рассорится с кем-то|   fall	out
+быть опубликованным|   come	out
+распечатать(на принтере)|   print	out
+разобраться, получть инфо|   find	out
+не влючить (в список)|    leave	out
+
+*UP
+перестать чтото делать регулярно|    give	up
+начать хобби|    take	up
+поднять громкость|   turn	up
+поискать где либо|   look	up
+разорвать на мелкие кусочки|   rip	up
+вырастить ребенка|   bring	up
+вырасти|   grow	up
+расстаться(разорвать отношения)|   split	up
+повесить трубку(передатчик)|   hang	up
+посчитать сумму(денежн.)|   add	up
+поторопиться|   hurry	up
+откладывать деньги|   save	up
+придумать объяснение (оправдание)|    make	up
+начать, создать (бизнес, организацию)|    set	up
+лечь спать поздно|     stay	up
+fed up	with
+встать|    stand	up
+застегнуть|    do	up
+наполнить|    fill	up
+
+*IN
+принять в чемто участие|    join	in
+intrested	in
+поучавствовать в|   take part	in
+succeed	in
+сесть в машину|   get	in
+заполнить форму|  fill	in
+involved	in
+
+*OFF
+отослать (отправить на замену)|    send	off
+сойти с поезда(автобуса, корабля)|    get	off
+отправиться в путешествие|   set	off
+оторваться от земли|   take	off
+быть отсоединенным от сети|   cut	off
+разлогиниться|    log	off
+оторвать|   pull	off
+выключить|   turn	off
+отменить|    call	off
+отложить дело на потом|    put	off
+устать, перестать быть свежим|    go	off
+отрезать|    cut	off
+снять (одежду)|   take	off
+
+*DOWN
+приглушить громкость|   turn	down
+записать|   write	down
+разочаровать, подвести|   let	down
+снять (с высокого места)|    take	down
+сломаться (для машины)|   break	down
+сократить|    cut	down
+упасть|    fall	down
+лечь|    lie	down
+присесть|    sit	down
+
+*WITH
+bored	with
+популярный среди|   popular	with
+перепутать с|   confuse	with
+продолжить что-то|   continue	with
+справляться с|   cope	with
+помочь с|    help	with
+provide	with
+встречаться с парнем(девушкой)|   go out	with
+a relationship	with
+communicate	with
+ошибаться в|    wrong	with
+быть аккуратным с|    careful	with
+covered	with
+pleased	with
+обьединить с|    combine	with
+disappointed	with
+знаком с |     familiar	with
+
+*ABOUT
+crazy	about
+a book	about
+знать о|   know	about
+learn	about
+an opinion	about
+a question	about
+спросить о|   ask	about
+argue with	about
+заботиться о|   care	about
+болтать о|   chat	about
+an argument with	about
+разговаривать о|   talk	about
+tell	about
+написать о|   write	about
+information	about
+письмо о|   a letter	about
+проинформировать о|   inform	about
+жаловаться на|    complain	about
+
+*AT
+good	at
+talanted	at
+cheat	at
+прийти|   arrive	at
+смотреть на|   look	at
+glance	at
+amazed	at
+
+*LIKE
+чувствоввать себя|  feel	like
+
+*TO
+listen	to
+рядом с|   close	to
+добр к|   kind	to
+married	to
+reply	to
+отправить|   send	to
+belong	to
+compare	to
+lend	to
+refer	to
+addicted	to
+allergic	to
+similar	to
+обьяснить кому-то|    explain	to
+
+*OF
+a fan	of
+capable	of
+быть в восторге от|   fond	of
+jealous	of
+proud	of
+своего рода|   a kind	of
+почувствоввать запах|   smell	of
+remind	of
+a picture	of
+
+*AGAINST
+a game	against
+бороться против|    fight	against
+
+*OVER
+развернуть или перевернуть|   turn	over
+захватить контроль|    take	over
+перенести, пережить, преодолеть|    get	over
+
+*AWAY
+уйти откуда-либо|    go	away
+отдать бесплатно|   give	away
+выбрость что-либо|   throw	away
+убрать|    take	away
+
+*BACK
+вернуться куда-либо|   go	back
+перезвонить кому-либо|   call	back
+вернуться|    come	back
+расплатиться, вернуть деньги|     pay	back
+вернуть по месту|   take	back
+вернуть, что позаимствовал|   give	back
+
+*FOR
+famous	for
+late	for
+suitable	for
+попросить (об услуге)|   ask	for
+prepare	for
+wait	for
+admire	for
+apologise	for
+заплатить|    pay	for
+an advert	for
+трудный для|      difficult	for
+ready	for
+responsible	for
+применить к|    apply	for
+работать на|    work	for
+a cure	for
+a recipe	for
+
+*FROM
+far	from
+получить от|   receive	from
+позаимствовать у|    borrow	from
+купить у|    buy	from
+умереть от|    die	from
+восстановиться от\после|    recover	from
+снять с|   remove	from
+
+*AFTER
+заботиться ок ком-то|   look	after
+
+*INTO
+translate	into
+переделать(превратить) в|    change	into
+
+*BETWEEN
+choose	between
+
+*ACROSS
+найти что-то случайно|    come	across
+
+*AS
+работать кем-то|     work	as
+описать как|   describe	as
