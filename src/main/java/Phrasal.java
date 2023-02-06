@@ -21,8 +21,6 @@ public class Phrasal extends CoreTesting{
     Phrasal(String path) {
         super(path);
         typeCommand = -1;
-        if(getFixedNumberOfQuestions()>QuestionNumber)
-            setFixedNumberOfQuestions(QuestionNumber);
     }
 
     void StartTest(){

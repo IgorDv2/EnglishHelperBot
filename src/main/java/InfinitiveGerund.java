@@ -17,8 +17,6 @@ public class InfinitiveGerund extends CoreTesting {
     InfinitiveGerund(String path) {
         super(path);
         typeCommand = 1;
-        if(getFixedNumberOfQuestions()>QuestionNumber)
-            setFixedNumberOfQuestions(QuestionNumber);
     }
 
     void StartTest(){

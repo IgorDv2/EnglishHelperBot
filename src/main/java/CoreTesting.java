@@ -82,6 +82,7 @@ public class CoreTesting {
             bufferString = reader.readLine();                                                                                         //Считывается следующая строка из файла
 
         }
+        System.out.println(QuestionNumber);
         return 0;
     }
 
@@ -224,6 +225,7 @@ public class CoreTesting {
         ErrorsNumber = 0;
         activeQuestionNumber = 0;
         typeCommand = -1;
+        setFixedNumberOfQuestions(50);
 
     }
 

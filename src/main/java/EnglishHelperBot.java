@@ -135,11 +135,15 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
             }
         }
         else if(getMenu() == 3){
+            if(CoreTesting.getFixedNumberOfQuestions()>case2.QuestionNumber)
+                CoreTesting.setFixedNumberOfQuestions(case2.QuestionNumber);
             if(updateBuffer.hasMessage()) {                         //При каждом апдейте с запущенным тестом
                 InfinitiveGerund.setBotInfAnswer(answerToBot);
                 case2.InfGerundTesting();                           //Метод тестирования совершает одну итерацию
             }
         } else if(getMenu() == 2){
+            if(CoreTesting.getFixedNumberOfQuestions()>case1.QuestionNumber)
+                CoreTesting.setFixedNumberOfQuestions(case1.QuestionNumber);
             if(updateBuffer.hasMessage()) {                         //При каждом апдейте с запущенным тестом
                 Phrasal.setBotPhraseAnswer(answerToBot);
                 System.out.println("Запрос получен");
