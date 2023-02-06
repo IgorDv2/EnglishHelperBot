@@ -17,6 +17,8 @@ public class InfinitiveGerund extends CoreTesting {
     InfinitiveGerund(String path) {
         super(path);
         typeCommand = 1;
+        if(getFixedNumberOfQuestions()>QuestionNumber)
+            setFixedNumberOfQuestions(QuestionNumber);
     }
 
     void StartTest(){
@@ -40,7 +42,7 @@ public class InfinitiveGerund extends CoreTesting {
 
         if (typeCommand == 1) {                                                                         //Если ответ дан правильно
             activeQuestionNumber++;                                                                     //следующий вопрос
-            if(activeQuestionNumber == QuestionNumber) {
+            if(activeQuestionNumber == getFixedNumberOfQuestions()) {
                 TestEnd();
                 return 0;
             }
@@ -69,7 +71,7 @@ public class InfinitiveGerund extends CoreTesting {
             MissedIndex++;
             activeQuestionNumber++;                                                                     //следующий вопрос
             isQuestionRepeated = false;
-            if(activeQuestionNumber == QuestionNumber) {
+            if(activeQuestionNumber == getFixedNumberOfQuestions()) {
                 TestEnd();
                 return 0;
             }

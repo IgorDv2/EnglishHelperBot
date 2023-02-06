@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="Добавлено считывание альтернативных ответов через '/'">
+    <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="Теперь  пропущенное место для предлога &quot;___&quot; проставляется только в случае тестирования на фразы">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CoreTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoreTesting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Phrasal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Phrasal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675315514065</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Теперь  пропущенное место для предлога &quot;___&quot; проставляется только в случае тестирования на фразы">
+      <created>1675318991234</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1675318991234</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,7 +139,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/Доработка_чтения_файлов" />
+                        <option value="Доработка_чтения_файлов" />
                       </list>
                     </value>
                   </entry>
@@ -148,6 +157,7 @@
     <MESSAGE value="Вынес запись ответа и вопроса из текстового файла в отдельные методы AnswerWriting и QuestionWriting соответственно." />
     <MESSAGE value="Массив ответов и воропсов теперь считывается из файла 1 раз, при этом порядок вопросов рандомизируется при каждом запуске теста (создание массива и рандомизация теперь не связаны). Методы AnswerWriting() и Question Writing() теперь объединены в один - QuestionAndAnswerWriting() - этот метод содержит единую логику считывания из файлов. Новый метод - TestEnd() выводит результат теста и обнуляет все счетчики, используемые в тестировании. Метод TestEnd() вызывается благодаря разным условиям в разных частях методов, отвечающих за тестирование (PhrasalTesting() и InfGerundTesting). Лишние поля и методы удалены." />
     <MESSAGE value="Добавлено считывание альтернативных ответов через '/'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлено считывание альтернативных ответов через '/'" />
+    <MESSAGE value="Теперь  пропущенное место для предлога &quot;___&quot; проставляется только в случае тестирования на фразы" />
+    <option name="LAST_COMMIT_MESSAGE" value="Теперь  пропущенное место для предлога &quot;___&quot; проставляется только в случае тестирования на фразы" />
   </component>
 </project>

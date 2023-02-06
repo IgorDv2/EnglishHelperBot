@@ -18,6 +18,16 @@ public class CoreTesting {
 
     protected int activeQuestionNumber = 0;            //Номер текущего вопроса
 
+    public static int getFixedNumberOfQuestions() {
+        return fixedNumberOfQuestions;
+    }
+
+    public static void setFixedNumberOfQuestions(int fixedNumberOfQuestions) {
+        CoreTesting.fixedNumberOfQuestions = fixedNumberOfQuestions;
+    }
+
+    private static int fixedNumberOfQuestions = 50;
+
     protected static EnglishHelperBot sendbot;                //Экземпляр бота для отправки ботом сообщений
 
     static {
@@ -167,9 +177,9 @@ public class CoreTesting {
     public int TestingSummery() {
         String buff1, buff2;                                           //буферные строки
 
-        System.out.println("Всего " + ErrorsNumber + " ошибок  в " + QuestionNumber + " вопросах");
+        System.out.println("Всего " + ErrorsNumber + " ошибок  в " + getFixedNumberOfQuestions() + " вопросах");
         System.out.println("*Ошибки:\n");
-        sendbot.sendMessage("Всего " + ErrorsNumber + " ошибок  в " + QuestionNumber + " вопросах\n" +
+        sendbot.sendMessage("Всего " + ErrorsNumber + " ошибок  в " + getFixedNumberOfQuestions() + " вопросах\n" +
                 "Ошибки:\n");
 
 

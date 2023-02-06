@@ -21,6 +21,8 @@ public class Phrasal extends CoreTesting{
     Phrasal(String path) {
         super(path);
         typeCommand = -1;
+        if(getFixedNumberOfQuestions()>QuestionNumber)
+            setFixedNumberOfQuestions(QuestionNumber);
     }
 
     void StartTest(){
@@ -52,7 +54,7 @@ public class Phrasal extends CoreTesting{
         if (typeCommand == 1) {                                                                         //Если ответ дан правильно
             activeQuestionNumber++;
             isQuestionRepeated = false;                                                                  //следующий вопрос
-            if(activeQuestionNumber == QuestionNumber) {
+            if(activeQuestionNumber == getFixedNumberOfQuestions()) {
                 TestEnd();
                 return 0;
             }
@@ -80,7 +82,7 @@ public class Phrasal extends CoreTesting{
             MissedIndex++;
             activeQuestionNumber++;                                                                     //следующий вопрос
             isQuestionRepeated = false;
-            if(activeQuestionNumber == QuestionNumber) {
+            if(activeQuestionNumber == getFixedNumberOfQuestions()) {
                 TestEnd();
                 return 0;
             }
