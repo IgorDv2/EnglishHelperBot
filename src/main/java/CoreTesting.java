@@ -18,6 +18,16 @@ public class CoreTesting {
 
     protected int activeQuestionNumber = 0;            //Номер текущего вопроса
 
+    public static int getFixedNumberOfQuestions() {
+        return fixedNumberOfQuestions;
+    }
+
+    public static void setFixedNumberOfQuestions(int fixedNumberOfQuestions) {
+        CoreTesting.fixedNumberOfQuestions = fixedNumberOfQuestions;
+    }
+
+    private static int fixedNumberOfQuestions = 50;
+
     protected static EnglishHelperBot sendbot;                //Экземпляр бота для отправки ботом сообщений
 
     static {
@@ -27,9 +37,19 @@ public class CoreTesting {
             throw new RuntimeException(e);
         }
     }
+
     protected int typeCommand = 1;                                        //управляющая переменная
     protected String DataFilePath;                                          //Строка для хранения пути к текстовому файлу с вопросами
 
+    public static String getTestingType() {
+        return TestingType;
+    }
+
+    public static void setTestingType(String testingType) {
+        TestingType = testingType;
+    }
+
+    protected static String TestingType;
 
     CoreTesting(String path) {                           //Конструктор принимает строку с путем к файлу
         DataFilePath = path;
@@ -38,11 +58,7 @@ public class CoreTesting {
     public int FileToArray() throws IOException {
 
         int characterNumber;                                     //Буфер для длинны строки
-
         String bufferString;
-
-
-
 
         File DataFile = new File(DataFilePath);
         FileReader fr = new FileReader(DataFile);
@@ -66,8 +82,7 @@ public class CoreTesting {
             bufferString = reader.readLine();                                                                                         //Считывается следующая строка из файла
 
         }
-
-        //Randomize();                                                                                                                   //сразу после созданияя массивов с вопросами и ответами - формируется массив случайных чисел
+        System.out.println(QuestionNumber);
         return 0;
     }
 
@@ -103,6 +118,7 @@ public class CoreTesting {
         }
         return 0;
     }
+
     int checkAnswer(String answer, String rightAnswer) {
 //Принимает результат ввода и возвращает 1 при правельном ответе,
 //2 при неправильном
@@ -121,7 +137,35 @@ public class CoreTesting {
             return 0;
         } else if (answer.equals(commandNext)) {
             return 3;
-        }else if(answer.equals(commandHelp)){
+        } else if (answer.equals(commandHelp)) {
+            return 4;
+        } else {
+            sendbot.sendMessage("INCORRECT");
+            System.out.println("INCORRECT\n");
+            return 2;
+        }
+
+    }
+
+    int checkAnswer(String answer, String rightAnswer1, String rightAnswer2) {
+//Принимает результат ввода и возвращает 1 при правельном ответе,
+//2 при неправильном
+//3 при введении команды "next" - для пропуска вопроса и выведения правильного ответа
+//и 0 при команде finish
+
+        String commandFinish = "/finish";
+        String commandNext = "/next";
+        String commandHelp = "/help";
+
+        if (answer.equals(rightAnswer1) || answer.equals(rightAnswer2)) {
+            sendbot.sendMessage("Correct");
+            System.out.println("Correct\n");
+            return 1;
+        } else if (answer.equals(commandFinish)) {
+            return 0;
+        } else if (answer.equals(commandNext)) {
+            return 3;
+        } else if (answer.equals(commandHelp)) {
             return 4;
         } else {
             sendbot.sendMessage("INCORRECT");
@@ -134,9 +178,9 @@ public class CoreTesting {
     public int TestingSummery() {
         String buff1, buff2;                                           //буферные строки
 
-        System.out.println("Всего " + ErrorsNumber + " ошибок  в " + QuestionNumber + " вопросах");
+        System.out.println("Всего " + ErrorsNumber + " ошибок  в " + getFixedNumberOfQuestions() + " вопросах");
         System.out.println("*Ошибки:\n");
-        sendbot.sendMessage("Всего " + ErrorsNumber + " ошибок  в " + QuestionNumber + " вопросах\n" +
+        sendbot.sendMessage("Всего " + ErrorsNumber + " ошибок  в " + getFixedNumberOfQuestions() + " вопросах\n" +
                 "Ошибки:\n");
 
 
@@ -173,7 +217,7 @@ public class CoreTesting {
         sendbot.sendMessage(showActiveQuestion);
     }
 
-    protected void TestEnd(){
+    protected void TestEnd() {
         TestingSummery();
         EnglishHelperBot.setMenu(0);
         WrongIndex = 0;
@@ -181,47 +225,53 @@ public class CoreTesting {
         ErrorsNumber = 0;
         activeQuestionNumber = 0;
         typeCommand = -1;
+        setFixedNumberOfQuestions(50);
 
     }
 
-    void QuestionAndAnswerWriting(int characterNumber){
+    void QuestionAndAnswerWriting(int characterNumber) {
         int activeCharacterIndex = 0;
         String QuestionBuff = "";
         String AnswerBuff = "";
         boolean isAnswer = false;
+        boolean inbetweenAnswer = false;
 
         System.out.print(QuestionArr[QuestionNumber]);
-        System.out.println( " "+ QuestionArr[QuestionNumber].length);
-        for(;activeCharacterIndex < characterNumber; activeCharacterIndex++){
-
-            if((QuestionArr[QuestionNumber][activeCharacterIndex] == '\t')){
+        System.out.println(" " + QuestionArr[QuestionNumber].length);
+        for (; activeCharacterIndex < characterNumber; activeCharacterIndex++) {
+            if ((QuestionArr[QuestionNumber][activeCharacterIndex] == '\t')) {
                 QuestionArr[QuestionNumber][activeCharacterIndex] = ' ';
                 activeCharacterIndex++;
 
-                for(;activeCharacterIndex < characterNumber; activeCharacterIndex++){
-                    if(QuestionArr[QuestionNumber][activeCharacterIndex] == ' ') {
+                for (; activeCharacterIndex < characterNumber; activeCharacterIndex++) {
+                    if (QuestionArr[QuestionNumber][activeCharacterIndex] == ' ') {
                         isAnswer = true;
+                        inbetweenAnswer = true;
                         break;
                     }
                     AnswerBuff += Character.toString(QuestionArr[QuestionNumber][activeCharacterIndex]);
-                    System.out.println(AnswerBuff+" "+activeCharacterIndex+" ("+characterNumber+")");
+                    System.out.println(AnswerBuff + " " + activeCharacterIndex + " (" + characterNumber + ")");
                 }
 
                 AnswerArr[QuestionNumber] = AnswerBuff.toCharArray();
                 System.out.print(AnswerBuff);
-                System.out.println(" "+AnswerBuff.length());
+                System.out.println(" " + AnswerBuff.length());
                 continue;
             }
 
-            if(isAnswer == true) {
+            if (isAnswer == true) {
                 System.out.println("isAnswer");
                 QuestionBuff += " ___ ";
                 isAnswer = false;
             }
-                QuestionBuff += Character.toString(QuestionArr[QuestionNumber][activeCharacterIndex]);
-                System.out.println(QuestionBuff);
+            QuestionBuff += Character.toString(QuestionArr[QuestionNumber][activeCharacterIndex]);
+            System.out.println(QuestionBuff);
+        }
+        if (inbetweenAnswer == false && getTestingType().equals("Phrasal")) {
+                QuestionBuff += " ___ ";
         }
         QuestionArr[QuestionNumber] = QuestionBuff.toCharArray();
     }
 
 }
+

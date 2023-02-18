@@ -1,0 +1,52 @@
+*Список глаголов после которых идет герундий
+admit	ing
+avoid	ing
+consider	ing
+delay	ing
+deny	ing
+escape	ing
+excuse	ing
+fancy	ing
+finish	ing
+forgive	ing
+imagine	ing
+enjoy	ing
+insist on	ing
+keep	ing
+look forward to	ing
+mention	ing
+mind	ing
+miss	ing
+postpone	ing
+practice	ing
+prevent	ing
+risk	ing
+save	ing
+stand	ing
+suggest	ing
+understand	ing
+continue	ing
+report	ing
+resist	ing
+
+*Список глаголов после которых идет инфинитив
+advise	to
+agree	to
+appear	to
+decide	to
+expect	to
+hope	to
+promise	to
+refuse	to
+want	to
+ask	to
+demand	to
+fail	to
+forget	to
+manage	to
+need	to
+prepare	to
+seem	to
+try	to
+wait	to
+wish	to

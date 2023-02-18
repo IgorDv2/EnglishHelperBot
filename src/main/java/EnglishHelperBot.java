@@ -26,8 +26,9 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
     private static long chat_id;
     private static Update updateBuffer;                                 //Буфер для апдейтов чата
     private static String answerToBot;                                  //Буфер для строки ввода пользователя
-    private Phrasal case1 = new Phrasal("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperJ\\EnglishHelperJ\\PhrasalV.txt");
-    private InfinitiveGerund case2 = new InfinitiveGerund("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperJ\\EnglishHelperJ\\InfinitiveOrGerund.txt");
+
+    private Phrasal case1 = new Phrasal("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\PhrasalV.txt");
+    private InfinitiveGerund case2 = new InfinitiveGerund("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\InfinitiveOrGerund.txt");
 
     public EnglishHelperBot() throws IOException {
     }
@@ -72,7 +73,8 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
                     StartTesting();                                                   //Метод для дублирования шапки текста в консоль
                     sendMessage("Для проведения теста по Phrasal verbs, Prepositional phrases, Word patterns Введите '1'\n"+
                             "Для проведения теста - Инфинитив или Герундий Введите '2'\n"+
-                            "Для завершения теста введите /finish\n");
+                            "Для завершения теста введите /finish\n"+
+                            "Чтобы задать количество вопросов в тесте введите /numberQ");
                     setMenu(1);                                                         //При запуске теста происходит считывание других комманд
                     break;
                 case "/finish":
@@ -85,6 +87,7 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
                 case "1":
                     setMenu(2);                                 //При запуске теста
                     if(Phrasal.getIsArrayDone() == false) {
+                        case1.setTestingType("Phrasal");
                         case1.FileToArray();                    //Создается массив рандомизированных вопросов на основе текстового файла
                         Phrasal.setIsArrayDone(true);
                     }
@@ -95,6 +98,7 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
                 case "2":
                     setMenu(3);                                 //При запуске теста
                     if(InfinitiveGerund.getIsArrayDone() == false) {
+                        case2.setTestingType("InfinitiveGerund");
                         case2.FileToArray();                        //Создается массив рандомизированных вопросов на основе текстового файла
                         InfinitiveGerund.setIsArrayDone(true);
                     }
@@ -108,17 +112,38 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
                 case "/help":
                     sendMessage("Для проведения теста по Phrasal verbs, Prepositional phrases, Word patterns Введите '1'\n"+
                             "Для проведения теста - Инфинитив или Герундий Введите '2'\n"+
-                            "Для завершения теста введите /finish\n");
+                            "Для завершения теста введите /finish\n"+
+                            "Чтобы задать количество вопросов в тесте введите /numberQ");
+                    break;
+                case "/numberQ":
+                    sendMessage("Введите количество вопросов в тесте от 20 до 200,\n");
+                    setMenu(-1);
                     break;
                 default:
                     sendMessage("Я не понимаю :(");
             }
-        } else if(getMenu() == 3){
+        }
+        else if(getMenu() == -1){
+            if(updateBuffer.hasMessage()) {                         //При каждом апдейте с запущенным тестом
+                if(Integer.parseInt(answerToBot)>=20 && Integer.parseInt(answerToBot)<=200){
+                    CoreTesting.setFixedNumberOfQuestions(Integer.parseInt(answerToBot));
+                    setMenu(1);
+                }
+                else
+                    sendMessage("Невозможное количество вопросов");
+
+            }
+        }
+        else if(getMenu() == 3){
+            if(CoreTesting.getFixedNumberOfQuestions()>case2.QuestionNumber)
+                CoreTesting.setFixedNumberOfQuestions(case2.QuestionNumber);
             if(updateBuffer.hasMessage()) {                         //При каждом апдейте с запущенным тестом
                 InfinitiveGerund.setBotInfAnswer(answerToBot);
                 case2.InfGerundTesting();                           //Метод тестирования совершает одну итерацию
             }
         } else if(getMenu() == 2){
+            if(CoreTesting.getFixedNumberOfQuestions()>case1.QuestionNumber)
+                CoreTesting.setFixedNumberOfQuestions(case1.QuestionNumber);
             if(updateBuffer.hasMessage()) {                         //При каждом апдейте с запущенным тестом
                 Phrasal.setBotPhraseAnswer(answerToBot);
                 System.out.println("Запрос получен");

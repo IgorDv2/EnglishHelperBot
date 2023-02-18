@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="Вынес запись ответа и вопроса из текстового файла в отдельные методы AnswerWriting и QuestionWriting соответственно.">
+    <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="Теперь можно задавать количество вопросов в тесте с помощью команды /numberQ">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PhrasalV.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PhrasalV.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CoreTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoreTesting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" afterDir="false" />
@@ -19,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Заставить_работать_Phrasal_test" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -99,7 +100,35 @@
       <option name="project" value="LOCAL" />
       <updated>1674686550714</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Массив ответов и воропсов теперь считывается из файла 1 раз, при этом порядок вопросов рандомизируется при каждом запуске теста (создание массива и рандомизация теперь не связаны). Методы AnswerWriting() и Question Writing() теперь объединены в один - QuestionAndAnswerWriting() - этот метод содержит единую логику считывания из файлов. Новый метод - TestEnd() выводит результат теста и обнуляет все счетчики, используемые в тестировании. Метод TestEnd() вызывается благодаря разным условиям в разных частях методов, отвечающих за тестирование (PhrasalTesting() и InfGerundTesting). Лишние поля и методы удалены.">
+      <created>1675281485734</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675281485734</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Добавлено считывание альтернативных ответов через '/'">
+      <created>1675315514065</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1675315514065</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Теперь  пропущенное место для предлога &quot;___&quot; проставляется только в случае тестирования на фразы">
+      <created>1675318991234</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1675318991234</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Теперь можно задавать количество вопросов в тесте с помощью команды /numberQ">
+      <created>1675708246682</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1675708246682</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -118,7 +147,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="Доработка_чтения_файлов" />
                       </list>
                     </value>
                   </entry>
@@ -134,6 +163,10 @@
     <MESSAGE value="Привел в порядок имена переменныхдобавил коментарии и удалил лишние комментарии" />
     <MESSAGE value="Phrasal Test корректно работает в телеграм боте" />
     <MESSAGE value="Вынес запись ответа и вопроса из текстового файла в отдельные методы AnswerWriting и QuestionWriting соответственно." />
-    <option name="LAST_COMMIT_MESSAGE" value="Вынес запись ответа и вопроса из текстового файла в отдельные методы AnswerWriting и QuestionWriting соответственно." />
+    <MESSAGE value="Массив ответов и воропсов теперь считывается из файла 1 раз, при этом порядок вопросов рандомизируется при каждом запуске теста (создание массива и рандомизация теперь не связаны). Методы AnswerWriting() и Question Writing() теперь объединены в один - QuestionAndAnswerWriting() - этот метод содержит единую логику считывания из файлов. Новый метод - TestEnd() выводит результат теста и обнуляет все счетчики, используемые в тестировании. Метод TestEnd() вызывается благодаря разным условиям в разных частях методов, отвечающих за тестирование (PhrasalTesting() и InfGerundTesting). Лишние поля и методы удалены." />
+    <MESSAGE value="Добавлено считывание альтернативных ответов через '/'" />
+    <MESSAGE value="Теперь  пропущенное место для предлога &quot;___&quot; проставляется только в случае тестирования на фразы" />
+    <MESSAGE value="Теперь можно задавать количество вопросов в тесте с помощью команды /numberQ" />
+    <option name="LAST_COMMIT_MESSAGE" value="Теперь можно задавать количество вопросов в тесте с помощью команды /numberQ" />
   </component>
 </project>

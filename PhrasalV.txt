@@ -1,0 +1,283 @@
+*ON
+продолжать|    carry	on
+keen	on
+сесть на поезд(автобус, корабль)|   get	on
+быть в хороших отношения|   get	on
+залогиниться|    log	on
+комментировать что-то|   comment	on
+decide	on
+потратить на|    spend	on
+включить|   turn	on
+что-то происходит, случилось|   go	on
+в зависимости|    depend	on
+набрать вес|    put	on
+носить на себе|    have	on
+надеть|    put	on
+примерить|    try	on
+an influence	on
+на борту|	on board
+пешком|	on foot
+на выходных|	on holiday
+по расписанию|	on schedule
+на берегу|	on the coast
+специально, умышленно|	on purpose
+в одиночку|	on your own
+в интернете|	on the Internet
+в новостях|	on the news
+по телефону|	on the phone
+по радио|	on the radio
+по телевизору|	on TV
+
+*OUT
+поесть в ресторане|    eat	out
+зачеркнуть|    cross	out
+обратить чье-либо внимание на что-то важное|   point	out
+зачитать на аудиторию|   read	out
+затереть ластиком|   rub	out
+выйти из машины(здания, комнаты)|   get	out
+рассорится с кем-то|   fall	out
+быть опубликованным|   come	out
+распечатать(на принтере)|   print	out
+разобраться, получть инфо|   find	out
+не влючить (в список)|    leave	out
+
+*UP
+перестать чтото делать регулярно|    give	up
+начать хобби|    take	up
+поднять громкость|   turn	up
+поискать где либо|   look	up
+разорвать на мелкие кусочки|   rip	up
+вырастить ребенка|   bring	up
+вырасти|   grow	up
+расстаться(разорвать отношения)|   split	up
+повесить трубку(передатчик)|   hang	up
+посчитать сумму(денежн.)|   add	up
+поторопиться|   hurry	up
+откладывать деньги|   save	up
+придумать объяснение (оправдание)|    make	up
+начать, создать (бизнес, организацию)|    set	up
+лечь спать поздно|     stay	up
+fed up	with
+встать|    stand	up
+застегнуть|    do	up
+наполнить|    fill	up
+
+*IN
+принять в чемто участие|    join	in
+intrested	in
+поучавствовать в|   take part	in
+succeed	in
+сесть в машину|   get	in
+заполнить форму|  fill	in
+involved	in
+в заключение|	in conclusion
+на самом деле|	in fact
+в пользу|	in favor
+в освновном|	in general
+в обoщем|	in common (with)
+в контакте|	in contact (with)
+влюблен в|	in love (with)
+наличными|	in cash
+в долгу|	in debt
+в плохом или хорошем состоянии|	in good(bad) condition
+по моему мнению|	in my opinion
+в конце концов|	in the end
+в будущем|	in the future
+в результате|   result	in
+
+*OFF
+отослать (отправить на замену)|    send	off
+сойти с поезда(автобуса, корабля)|    get	off
+отправиться в путешествие|   set	off
+оторваться от земли|   take	off
+быть отсоединенным от сети|   cut	off
+разлогиниться|    log	off
+оторвать|   pull	off
+выключить|   turn	off
+отменить|    call	off
+отложить дело на потом|    put	off
+устать, перестать быть свежим|    go	off
+отрезать|    cut	off
+снять (одежду)|   take	off
+
+*DOWN
+приглушить громкость|   turn	down
+записать|   write	down
+разочаровать, подвести|   let	down
+снять (с высокого места)|    take	down
+сломаться (для машины)|   break	down
+сократить|    cut	down
+упасть|    fall	down
+лечь|    lie	down
+присесть|    sit	down
+
+*WITH
+bored	with
+популярный среди|   popular	with
+перепутать с|   confuse	with
+продолжить что-то|   continue	with
+справляться с|   cope	with
+помочь с|    help	with
+provide	with
+встречаться с парнем(девушкой)|   go out	with
+a relationship	with
+communicate	with
+ошибаться в|    wrong	with
+быть аккуратным с|    careful	with
+covered	with
+pleased	with
+обьединить с|    combine	with
+disappointed	with
+знаком с |     familiar	with
+начиная с|    begin	with
+заполнить|    fill	with
+
+*ABOUT
+crazy	about
+a book	about
+знать о|   know	about
+learn	about
+an opinion	about/of
+a question	about
+спросить о|   ask	about
+argue with	about
+заботиться о|   care	about
+болтать о|   chat	about
+an argument with	about
+разговаривать о|   talk	about
+tell	about
+написать о|   write	about
+information	about
+письмо о|   a letter	about
+проинформировать о|   inform	about
+жаловаться на|    complain	about
+быть неправым|    wrong	about/with
+идея о|   an idea	about
+
+*AT
+good	at
+talanted	at
+cheat	at/in
+прийти|   arrive	at/in
+смотреть на|   look	at
+glance	at
+amazed	at
+наконец|	at last
+
+*LIKE
+чувствоввать себя|  feel	like
+
+*TO
+listen	to
+рядом с|   close	to
+добр к|   kind	to
+married	to
+reply	to
+отправить|   send	to
+belong	to
+compare	to/with
+lend	to
+refer	to
+addicted	to
+allergic	to
+similar	to
+обьяснить кому-то|    explain	to
+connect	to/with
+
+*OF
+a fan	of
+capable	of
+быть в восторге от|   fond	of
+jealous	of
+proud	of
+своего рода|   a kind	of
+почувствоввать запах|   smell	of
+remind	of
+a picture	of
+вне очереди|    out	of order
+полон|    full	of
+несколько|   a number	of
+тип|	a type	of
+
+*AGAINST
+a game	against
+бороться против|    fight	against
+
+*OVER
+развернуть или перевернуть|   turn	over
+захватить контроль|    take	over
+перенести, пережить, преодолеть|    get	over
+
+*AWAY
+уйти откуда-либо|    go	away
+отдать бесплатно|   give	away
+выбрость что-либо|   throw	away
+убрать|    take	away
+
+*BACK
+вернуться куда-либо|   go	back
+перезвонить кому-либо|   call	back
+вернуться|    come	back
+расплатиться, вернуть деньги|     pay	back
+вернуть по месту|   take	back
+вернуть, что позаимствовал|   give	back
+
+*FOR
+famous	for
+late	for
+suitable	for
+попросить (об услуге)|   ask	for
+prepare	for
+wait	for
+admire	for
+apologise	for
+заплатить|    pay	for
+an advert	for
+трудный для|      difficult	for
+ready	for
+responsible	for
+применить к|    apply	for
+работать на|    work	for
+a cure	for
+a recipe	for
+например|	for instance
+в аренду|	for rent
+продается|	for sale
+причина|    a reason	for
+
+*FROM
+far	from
+получить от|   receive	from
+позаимствовать у|    borrow	from
+купить у|    buy	from
+умереть от|    die	from
+восстановиться от\после|    recover	from
+снять с|   remove	from
+отличается от|    different	from/to
+отсоединить от|    disconnect	from
+
+*AFTER
+заботиться ок ком-то|   look	after
+
+*INTO
+translate	into
+переделать(превратить) в|    change	into
+
+*BETWEEN
+choose	between
+разница между|    a difference	between
+
+*ACROSS
+найти что-то случайно|    come	across
+
+*AS
+работать кем-то|     work	as
+описать как|   describe	as
+
+*BY
+наизусть|	by heart
+добраться с помощью|	by air, sea, bus, car
+самостоятельно|	by yourself
+оплатить кредитной картой|	by credit card(cheque)
+случайно|	by chance
+на имейл, по телефону, письмом|	by e-mail(phone, letter)
