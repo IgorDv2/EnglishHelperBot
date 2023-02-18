@@ -1,9 +1,14 @@
-public class InfinitiveGerund extends CoreTesting {
+public class InfinitiveGerund extends CoreTesting {                                                             //класс для теста на использование инфинитивов или герундия
     public static void setBotInfAnswer(String botInfAnswer) {
         InfinitiveGerund.botInfAnswer = botInfAnswer;
     }
-    private static String botInfAnswer = " ";
-    private boolean isQuestionRepeated = false;             //флаг для проверки повторения вопроса
+
+    public static String getBotInfAnswer() {
+        return botInfAnswer;
+    }
+
+    private static String botInfAnswer = " ";                                                                   //строка содержащая ответ на вопрос, заданный боту
+    private boolean isQuestionRepeated = false;                                                                 //флаг для проверки повторения вопроса
     public static boolean getIsArrayDone() {
         return IsArrayDone;
     }
@@ -12,14 +17,14 @@ public class InfinitiveGerund extends CoreTesting {
         InfinitiveGerund.IsArrayDone = isArrayDone;
     }
 
-    private static boolean IsArrayDone = false;
+    private static boolean IsArrayDone = false;                                                                 //флаг, обозначающий, что файл с вопросами считан
 
     InfinitiveGerund(String path) {
         super(path);
         typeCommand = 1;
     }
 
-    void StartTest(){
+    void StartTest(){                                                                             //метод, выдающий напоминалку после запуска теста
         sendbot.sendMessage("В случае использования инфинитива введите to\n"+
                 "В случае использования герундия введите ing\n"+
                 "Для пропуска вопроса введите /next\n"+
@@ -30,42 +35,42 @@ public class InfinitiveGerund extends CoreTesting {
         String stringBuffer;									    //Буффер для строки
         String activeAnswer;                                        //Буфер строки ответа
 
-        activeAnswer = String.copyValueOf(AnswerArr[RandomNumberArrPointer[activeQuestionNumber]]);					//в буфер помещаются строки, соответствующие случайному
-        typeCommand = checkAnswer(botInfAnswer, activeAnswer);	                            //сверка введенного ответа с правильным ответом
+        activeAnswer = AnswerArr.get(RandomNumberArrPointer[activeQuestionNumber]);					//в буфер помещаются строки, соответствующие случайному символу
+        typeCommand = checkAnswer(getBotInfAnswer(), activeAnswer);	                                //сверка введенного ответа с правильным ответом
 
         if(typeCommand == 0){
-            TestEnd();
+            TestEnd();                                                                              //конец тестирования
             return 0;
         }
 
         if (typeCommand == 1) {                                                                         //Если ответ дан правильно
             activeQuestionNumber++;                                                                     //следующий вопрос
-            if(activeQuestionNumber == getFixedNumberOfQuestions()) {
-                TestEnd();
+            if(activeQuestionNumber == getFixedNumberOfQuestions()) {                                   //если номер текущего вопроса равен максимальному для этого теста
+                TestEnd();                                                                              //то тест окончен
                 return 0;
             }
             isQuestionRepeated = false;
-            showQuestion();                                                                             //следующий вопрос отображает бот
+            showQuestion();                                                                             //бот отображает следующий вопрос
         }
 
         if (typeCommand == 2) {                                                                         //Если ответ да неверно
             ErrorsNumber++;                                                                             //плюс к количеству ошибок
             showQuestion();
-            if (isQuestionRepeated == false) {													    //если ошибочный ответ дан первый раз
-                    WrongAnswer[WrongIndex] = RandomNumberArrPointer[activeQuestionNumber];			//в массив кладется номер текущего вопроса и ответа
+            if (!isQuestionRepeated) {													                //если ошибочный ответ дан первый раз
+                    WrongAnswer.add(WrongIndex, RandomNumberArrPointer[activeQuestionNumber]);			//в список кладется номер текущего вопроса и ответа
                     WrongIndex++;
                     isQuestionRepeated = true;
                 }
         }
 
         if (typeCommand == 3) {																			//в случае пропуска вопроса:
-            stringBuffer = String.copyValueOf(AnswerArr[RandomNumberArrPointer[activeQuestionNumber]]);
-            System.out.println(AnswerArr[RandomNumberArrPointer[activeQuestionNumber]]);
+            stringBuffer = AnswerArr.get(RandomNumberArrPointer[activeQuestionNumber]);
+            //System.out.println(AnswerArr.get(RandomNumberArrPointer[activeQuestionNumber]));
 
             showQuestion();
             sendbot.sendMessage(stringBuffer);                                                          //выводится правилный ответ
             ErrorsNumber++;
-            MissedQuestions[MissedIndex] = RandomNumberArrPointer[activeQuestionNumber];				//в масив кладется номер текущего вопроса и ответа
+            MissedQuestions.add(MissedIndex, RandomNumberArrPointer[activeQuestionNumber]);				//в список кладется номер текущего вопроса и ответа
             MissedIndex++;
             activeQuestionNumber++;                                                                     //следующий вопрос
             isQuestionRepeated = false;
@@ -75,7 +80,7 @@ public class InfinitiveGerund extends CoreTesting {
             }
             showQuestion();
         }
-        if(typeCommand == 4) {
+        if(typeCommand == 4) {                                                                          //при команде /help выводится напоминалка и текущий вопрос
             StartTest();
             showQuestion();
         }
@@ -84,11 +89,11 @@ public class InfinitiveGerund extends CoreTesting {
     }
 
 
-    private void ConsoleAnswerCheck(){
+   /* private void ConsoleAnswerCheck(){
         String activeQuestion;
         activeQuestion = String.copyValueOf(QuestionArr[RandomNumberArrPointer[activeQuestionNumber]]);				//числу, лежащему в массиве случайных числел
         System.out.println(activeQuestionNumber+" of "+QuestionNumber );
         System.out.println(activeQuestion);
         System.out.println(botInfAnswer);
-    }
+    }*/
 }

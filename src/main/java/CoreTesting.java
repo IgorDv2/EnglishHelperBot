@@ -3,20 +3,21 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 
 public class CoreTesting {
-    protected char[][] QuestionArr = new char[300][100];                            //массив для хранения строк, содержащих вопросы
-    protected char[][] AnswerArr = new char[300][100];                              //массив для хранения правильных ответов
-    protected int[] WrongAnswer = new int[300];                                     //массив для хранения номеров вопросов/ответов, где была ошибка
-    protected int[] MissedQuestions = new int[300];                                 //массив для номеров вопросов которые были пропущены
+    protected ArrayList<String> QuestionArr = new ArrayList<>();                    //список для хранения строк, содержащих вопросы
+    protected ArrayList<String> AnswerArr = new ArrayList<>();                      //список для хранения строк, содержащих ответы
+    protected ArrayList<Integer> WrongAnswer= new ArrayList<>();                    //список номеров вопросов/ответов, где была ошибка
+    protected ArrayList<Integer> MissedQuestions= new ArrayList<>();                //список номеров вопросов, которые были пропущены
     protected int QuestionNumber = 0;                                               //общее число вопросов/ответов
     protected int[] RandomNumberArrPointer;                                         //Указатель на массив со случайными числами
     protected int ErrorsNumber = 0;                                                 //общее количество ошибок
 
-    protected int WrongIndex = 0;                                                             //индекс массива вопросов/ответов c ошибками
-    protected int MissedIndex = 0;                                                            //индекс массива пропущенных впросов
+    protected int WrongIndex = 0;                                                    //индекс массива вопросов/ответов c ошибками
+    protected int MissedIndex = 0;                                                   //индекс массива пропущенных впросов
 
-    protected int activeQuestionNumber = 0;            //Номер текущего вопроса
+    protected int activeQuestionNumber = 0;                                          //Номер текущего вопроса
 
     public static int getFixedNumberOfQuestions() {
         return fixedNumberOfQuestions;
@@ -26,9 +27,9 @@ public class CoreTesting {
         CoreTesting.fixedNumberOfQuestions = fixedNumberOfQuestions;
     }
 
-    private static int fixedNumberOfQuestions = 50;
+    private static int fixedNumberOfQuestions = 50;                                    //переменная, содержащая максимальное количество вопросов для конкретного теста
 
-    protected static EnglishHelperBot sendbot;                //Экземпляр бота для отправки ботом сообщений
+    protected static EnglishHelperBot sendbot;                                          //Экземпляр бота для отправки ботом сообщений
 
     static {
         try {
@@ -38,8 +39,8 @@ public class CoreTesting {
         }
     }
 
-    protected int typeCommand = 1;                                        //управляющая переменная
-    protected String DataFilePath;                                          //Строка для хранения пути к текстовому файлу с вопросами
+    protected int typeCommand = 1;                                                      //переменная обозначающая состояние тестирования
+    protected String DataFilePath;                                                      //Строка для хранения пути к текстовому файлу с вопросами
 
     public static String getTestingType() {
         return TestingType;
@@ -51,35 +52,32 @@ public class CoreTesting {
 
     protected static String TestingType;
 
-    CoreTesting(String path) {                           //Конструктор принимает строку с путем к файлу
+    CoreTesting(String path) {                                                          //Конструктор принимает строку с путем к файлу
         DataFilePath = path;
     }
 
     public int FileToArray() throws IOException {
 
-        int characterNumber;                                     //Буфер для длинны строки
-        String bufferString;
+        String bufferString;                                    //буферная строка
 
         File DataFile = new File(DataFilePath);
         FileReader fr = new FileReader(DataFile);
         BufferedReader reader = new BufferedReader(fr);
 
-        bufferString = reader.readLine();                                                               //Считывается первая строка из файла
+        bufferString = reader.readLine();                        //Считывается первая строка из файла
 
-        while (bufferString != null) {                                                                   //пока не закончатся строки в файле
+        while (bufferString != null) {                           //пока не закончатся строки в файле
 
-            if (bufferString.length() == 0)                                                              //если строка пустая то она пропускается
-                bufferString = reader.readLine();                                                       //повторный вызов функции переходит к следующей строке в файле
+            if (bufferString.length() == 0)                      //если строка пустая, то она пропускается
+                bufferString = reader.readLine();                //повторный вызов метода переходит к следующей строке в файле
 
-            characterNumber = bufferString.length();
-            QuestionArr[QuestionNumber] = bufferString.toCharArray();                                    //кладем строку в массив посимвольно
+            QuestionArr.add(QuestionNumber, bufferString);       //кладем строку из буфера в список вопросов
+            QuestionAndAnswerWriting(bufferString.length());     //вызываем основную функцию передавая длину текущей строки
 
-            QuestionAndAnswerWriting(characterNumber);
+            if (QuestionArr.get(QuestionNumber).charAt(0) != '\n' && QuestionArr.get(QuestionNumber).charAt(0) != 0 && QuestionArr.get(QuestionNumber).charAt(0) != '*')    //это условие позволяет пропускать пустые строки и строки, начинающиеся с *
+                QuestionNumber++;                                                                                                                                           //только при соблюдении этого условия, идет запись следующей строки в список
 
-            if (QuestionArr[QuestionNumber][0] != '\n' && QuestionArr[QuestionNumber][0] != 0 && QuestionArr[QuestionNumber][0] != '*')  //это условие позволяет пропускать пустые строки и строки, начинающиеся с *
-                QuestionNumber++;                                                                                                     //только при соблюдения этого условия, идет запись следующей строки в массив
-
-            bufferString = reader.readLine();                                                                                         //Считывается следующая строка из файла
+            bufferString = reader.readLine();                     //Считывается следующая строка из файла
 
         }
         System.out.println(QuestionNumber);
@@ -109,7 +107,7 @@ public class CoreTesting {
 
             if (nonReccurentCheckArr[RandBuff] == -1) {                                //если свежесгенерированное число еще не использованно, записываем его в массив
                 randomNumbersArr[x] = RandBuff;
-                nonReccurentCheckArr[RandBuff] = -2;                                //делаем отметку в буферном массиве, что это число использованно
+                nonReccurentCheckArr[RandBuff] = -2;                                    //делаем отметку в буферном массиве, что это число использованно
                 x++;
             }
 
@@ -120,10 +118,11 @@ public class CoreTesting {
     }
 
     int checkAnswer(String answer, String rightAnswer) {
-//Принимает результат ввода и возвращает 1 при правельном ответе,
+//Принимает результат ввода и возвращает 1 при правильном ответе,
 //2 при неправильном
 //3 при введении команды "next" - для пропуска вопроса и выведения правильного ответа
 //и 0 при команде finish
+// 4 при команде /help
 
         String commandFinish = "/finish";
         String commandNext = "/next";
@@ -148,10 +147,12 @@ public class CoreTesting {
     }
 
     int checkAnswer(String answer, String rightAnswer1, String rightAnswer2) {
-//Принимает результат ввода и возвращает 1 при правельном ответе,
+        //перегруженный метод для сравнения с двумя вариантами правильного ответа
+//Принимает результат ввода и возвращает 1 при правильном ответе,
 //2 при неправильном
 //3 при введении команды "next" - для пропуска вопроса и выведения правильного ответа
 //и 0 при команде finish
+// 4 при команде /help
 
         String commandFinish = "/finish";
         String commandNext = "/next";
@@ -176,21 +177,21 @@ public class CoreTesting {
     }
 
     public int TestingSummery() {
-        String buff1, buff2;                                           //буферные строки
+        String buff1, buff2;                                               //буферные строки
 
         System.out.println("Всего " + ErrorsNumber + " ошибок  в " + getFixedNumberOfQuestions() + " вопросах");
         System.out.println("*Ошибки:\n");
         sendbot.sendMessage("Всего " + ErrorsNumber + " ошибок  в " + getFixedNumberOfQuestions() + " вопросах\n" +
                 "Ошибки:\n");
 
+        for (int i = 0; i < WrongIndex; i++) {                              //выдает на экран все правильные фразы в которых была допущена ошибка
 
-        for (int i = 0; i < WrongIndex; i++) {                            //выдает на экран все правильные фразы в которых была допущена ошибка
-            buff1 = String.valueOf(QuestionArr[WrongAnswer[i]]);
-            buff2 = String.valueOf(AnswerArr[WrongAnswer[i]]);
+            buff1 = QuestionArr.get(WrongAnswer.get(i));
+            buff2 = AnswerArr.get(WrongAnswer.get(i));
 
-            System.out.print(QuestionArr[WrongAnswer[i]]);
+            System.out.print(QuestionArr.get(WrongAnswer.get(i)));
             System.out.print(" ");
-            System.out.println(AnswerArr[WrongAnswer[i]]);
+            System.out.println(AnswerArr.get(WrongAnswer.get(i)));
 
             sendbot.sendMessage(buff1 + " " + buff2);
         }
@@ -200,11 +201,11 @@ public class CoreTesting {
         sendbot.sendMessage("Пропущенные вопросы:");
 
         for (int x = 0; x < MissedIndex; x++) {                            //выдает на экран все фразы, которые были пропущены
-            buff1 = String.valueOf(QuestionArr[MissedQuestions[x]]);
-            buff2 = String.valueOf(AnswerArr[MissedQuestions[x]]);
+            buff1 = QuestionArr.get(MissedQuestions.get(x));
+            buff2 = AnswerArr.get(MissedQuestions.get(x));
 
-            System.out.print(QuestionArr[MissedQuestions[x]]);
-            System.out.println(AnswerArr[MissedQuestions[x]]);
+            System.out.print(QuestionArr.get(MissedQuestions.get(x)));
+            System.out.println(AnswerArr.get(MissedQuestions.get(x)));
 
             sendbot.sendMessage(buff1 + " " + buff2);
         }
@@ -213,13 +214,13 @@ public class CoreTesting {
     }
 
     void showQuestion() {                                            //Метод, выводящий вопрос в чат телеграм бота
-        String showActiveQuestion = String.copyValueOf(QuestionArr[RandomNumberArrPointer[activeQuestionNumber]]);
+        String showActiveQuestion = QuestionArr.get(RandomNumberArrPointer[activeQuestionNumber]);
         sendbot.sendMessage(showActiveQuestion);
     }
 
-    protected void TestEnd() {
-        TestingSummery();
-        EnglishHelperBot.setMenu(0);
+    protected void TestEnd() {                                          //метод, который обнуляет индексы в конце конкретного тестирования
+        TestingSummery();                                               //вызывает метод показывающий результаты тестирования
+        EnglishHelperBot.setMenu(0);                                    //переключает меню выбора команд в начало
         WrongIndex = 0;
         MissedIndex = 0;
         ErrorsNumber = 0;
@@ -229,48 +230,49 @@ public class CoreTesting {
 
     }
 
-    void QuestionAndAnswerWriting(int characterNumber) {
-        int activeCharacterIndex = 0;
+    void QuestionAndAnswerWriting(int characterNumber) {                //единый метод для записи вопросов и ответов в соответствующие списки, принимает длину текущей строки
+        int activeCharacterIndex = 0;                                   //все откоменченные выводы в консоль помогают понять как это все работает, пока не удалять!!!
         String QuestionBuff = "";
         String AnswerBuff = "";
         boolean isAnswer = false;
-        boolean inbetweenAnswer = false;
+        boolean inBetweenAnswer = false;
 
-        System.out.print(QuestionArr[QuestionNumber]);
-        System.out.println(" " + QuestionArr[QuestionNumber].length);
-        for (; activeCharacterIndex < characterNumber; activeCharacterIndex++) {
-            if ((QuestionArr[QuestionNumber][activeCharacterIndex] == '\t')) {
-                QuestionArr[QuestionNumber][activeCharacterIndex] = ' ';
+        //System.out.print(QuestionArr.get(QuestionNumber));
+        //System.out.println(" " + QuestionArr.get(QuestionNumber).length());
+
+        for (; activeCharacterIndex < characterNumber; activeCharacterIndex++) {                   //для каждого символа строки
+            if ((QuestionArr.get(QuestionNumber).charAt(activeCharacterIndex) == '\t')) {          //если обнаружен знак табуляции(который указывает на то, что ответ идет прямо за ним)
+                QuestionArr.get(QuestionNumber).replace('\t', ' ');                 //заменяем табуляцию на пробел
                 activeCharacterIndex++;
 
-                for (; activeCharacterIndex < characterNumber; activeCharacterIndex++) {
-                    if (QuestionArr[QuestionNumber][activeCharacterIndex] == ' ') {
-                        isAnswer = true;
-                        inbetweenAnswer = true;
+                for (; activeCharacterIndex < characterNumber; activeCharacterIndex++) {            //перебираем дальше строку посимвольно до следующего пробела
+                    if (QuestionArr.get(QuestionNumber).charAt(activeCharacterIndex) == ' ') {      //если пробел найден до конца строки выходим из цикла
+                        isAnswer = true;                                                            //флаг найденного ответа
+                        inBetweenAnswer = true;                                                     //флаг ответа в середине вопроса
                         break;
                     }
-                    AnswerBuff += Character.toString(QuestionArr[QuestionNumber][activeCharacterIndex]);
-                    System.out.println(AnswerBuff + " " + activeCharacterIndex + " (" + characterNumber + ")");
+                    AnswerBuff += Character.toString(QuestionArr.get(QuestionNumber).charAt(activeCharacterIndex));     //конкатенируем посимвольно символы ответа в буферную строку(ДА это костылесипед, НЕТ пока я не буду его распутывать)
+                    //System.out.println(AnswerBuff + " " + activeCharacterIndex + " (" + characterNumber + ")");
                 }
 
-                AnswerArr[QuestionNumber] = AnswerBuff.toCharArray();
-                System.out.print(AnswerBuff);
-                System.out.println(" " + AnswerBuff.length());
-                continue;
+                AnswerArr.add(QuestionNumber, AnswerBuff);                  //добавляем в список ответов строку из буфера
+                //System.out.print(AnswerBuff);
+                //System.out.println(" " + AnswerBuff.length());
+                continue;                                                   //и переходим к следующему символу
             }
 
-            if (isAnswer == true) {
-                System.out.println("isAnswer");
-                QuestionBuff += " ___ ";
+            if (isAnswer == true) {                                         //при флаге ответа
+                //System.out.println("isAnswer");
+                QuestionBuff += " ___ ";                                    //обозначаем места, где он ожидается
                 isAnswer = false;
             }
-            QuestionBuff += Character.toString(QuestionArr[QuestionNumber][activeCharacterIndex]);
-            System.out.println(QuestionBuff);
+            QuestionBuff += Character.toString(QuestionArr.get(QuestionNumber).charAt(activeCharacterIndex));           //конкатенируем посимвольно символы вопроса в буферную строку(ДА, это еще один костылесипед)
+            //System.out.println(QuestionBuff);
         }
-        if (inbetweenAnswer == false && getTestingType().equals("Phrasal")) {
-                QuestionBuff += " ___ ";
+        if (inBetweenAnswer == false && getTestingType().equals("Phrasal")) {       //если тип тестирования - устойчивые фразы и ответ лежит внутри фразы
+                QuestionBuff += " ___ ";                                            //конкатенируем обозначение этого места в конец вопроса
         }
-        QuestionArr[QuestionNumber] = QuestionBuff.toCharArray();
+        QuestionArr.add(QuestionNumber , QuestionBuff);                       //записываем текущий вопрос в список вопросов.
     }
 
 }
