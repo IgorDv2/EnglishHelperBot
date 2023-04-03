@@ -21,14 +21,14 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
         return menu;
     }
 
-    public static int menu = 0;                                        //Переменная для управлением меню выбора
+    public static int menu = 0;                                        //Переменная для управления меню выбора
 
     private static long chat_id;
     private static Update updateBuffer;                                 //Буфер для апдейтов чата
     private static String answerToBot;                                  //Буфер для строки ввода пользователя
 
-    private Phrasal case1 = new Phrasal("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\PhrasalV.txt");
-    private InfinitiveGerund case2 = new InfinitiveGerund("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\InfinitiveOrGerund.txt");
+    private Phrasal case1 = new Phrasal("C:\\Users\\Oddler\\IdeaProjects\\EnglishHelperBot\\PhrasalV.txt");                                //РАЗОБРАТЬСЯ, стоит ли делать final объекты и как это сделать
+    private InfinitiveGerund case2 = new InfinitiveGerund("C:\\Users\\Oddler\\IdeaProjects\\EnglishHelperBot\\InfinitiveOrGerund.txt");
 
     public EnglishHelperBot() throws IOException {
     }
@@ -62,14 +62,14 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
         }
     }
 
-    public void BotLogic() throws IOException {
-        if(getMenu() == 0) {
+    public void BotLogic() throws IOException {                                       //ужасный костылесипед, выполняющий функцию меню при запросе сообщения ботом.
+        if(getMenu() == 0) {                                                          //стартовое меню
             switch (answerToBot) {
                 case "/help":
                     sendMessage("Привет, я English Helper! Я провожу различные тесты на знание английского.\n"+
                             "Для проведения теста введите /test");
                     break;
-                case "/test":
+                case "/test":                                                         //запускает тест
                     StartTesting();                                                   //Метод для дублирования шапки текста в консоль
                     sendMessage("Для проведения теста по Phrasal verbs, Prepositional phrases, Word patterns Введите '1'\n"+
                             "Для проведения теста - Инфинитив или Герундий Введите '2'\n"+
@@ -82,27 +82,27 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
                 default:
                     sendMessage("Я не понимаю :(");
             }
-        } else if(getMenu() == 1){
+        } else if(getMenu() == 1){                              //меню выбора типа теста
             switch (answerToBot){
                 case "1":
                     setMenu(2);                                 //При запуске теста
-                    if(Phrasal.getIsArrayDone() == false) {
+                    if(Phrasal.getIsArrayDone() == false) {     //если файл еще не прочтен
                         case1.setTestingType("Phrasal");
-                        case1.FileToArray();                    //Создается массив рандомизированных вопросов на основе текстового файла
+                        case1.FileToArray();                    //Создается список вопросов и ответов на основе текстового файла
                         Phrasal.setIsArrayDone(true);
                     }
-                    case1.Randomize();
+                    case1.Randomize();                          //создается случайный порядок вопросов
                     case1.StartTest();                          //Отображается шапка с текстом для начала теста
                     case1.showQuestion();                       //Отображается первый вопрос
                     break;
                 case "2":
-                    setMenu(3);                                 //При запуске теста
+                    setMenu(3);                                     //При запуске теста
                     if(InfinitiveGerund.getIsArrayDone() == false) {
                         case2.setTestingType("InfinitiveGerund");
-                        case2.FileToArray();                        //Создается массив рандомизированных вопросов на основе текстового файла
+                        case2.FileToArray();                        //Создается список вопросов и ответов на основе текстового файла
                         InfinitiveGerund.setIsArrayDone(true);
                     }
-                    case2.Randomize();
+                    case2.Randomize();                          //создается случайный порядок вопросов
                     case2.StartTest();                          //Отображается шапка с текстом для начала теста
                     case2.showQuestion();                       //Отображается первый вопрос
                     break;
@@ -115,7 +115,7 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
                             "Для завершения теста введите /finish\n"+
                             "Чтобы задать количество вопросов в тесте введите /numberQ");
                     break;
-                case "/numberQ":
+                case "/numberQ":                                //команда, запускающая подменю для считывания желаемого количества вопросов в тесте
                     sendMessage("Введите количество вопросов в тесте от 20 до 200,\n");
                     setMenu(-1);
                     break;
@@ -125,9 +125,9 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
         }
         else if(getMenu() == -1){
             if(updateBuffer.hasMessage()) {                         //При каждом апдейте с запущенным тестом
-                if(Integer.parseInt(answerToBot)>=20 && Integer.parseInt(answerToBot)<=200){
+                if(Integer.parseInt(answerToBot)>=20 && Integer.parseInt(answerToBot)<=200){        //считывает фиксированное количество вопросов в тесте (по умолчанию 50)
                     CoreTesting.setFixedNumberOfQuestions(Integer.parseInt(answerToBot));
-                    setMenu(1);
+                    setMenu(1);                                                                     //возвращает в меню выбора теста
                 }
                 else
                     sendMessage("Невозможное количество вопросов");
@@ -135,7 +135,7 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
             }
         }
         else if(getMenu() == 3){
-            if(CoreTesting.getFixedNumberOfQuestions()>case2.QuestionNumber)
+            if(CoreTesting.getFixedNumberOfQuestions()>case2.QuestionNumber)            //если заданное количество вопросов превышает максимальное, установить максимум вопросов из файла
                 CoreTesting.setFixedNumberOfQuestions(case2.QuestionNumber);
             if(updateBuffer.hasMessage()) {                         //При каждом апдейте с запущенным тестом
                 InfinitiveGerund.setBotInfAnswer(answerToBot);
@@ -153,7 +153,7 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
         }
     }
 
-    public void sendMessage(String messageText) {                   //Общий метод для отображения сообещий ботом
+    public void sendMessage(String messageText) {                   //Общий метод для отображения сообщений ботом
         SendMessage message = new SendMessage();
         message.setChatId(chat_id);
         message.setText(messageText);
@@ -164,7 +164,7 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
         }
     }
 
-    void StartTesting(){
+    void StartTesting(){                            //метод - выведение напоминалки, следует поменять имена у него и похожих, согласно полиморфизму
         System.out.println("Для проведения теста по Phrasal verbs, Prepositional phrases, Word patterns \nВведите '1'\n");
         System.out.println("Для проведения теста - Инфинитив или Герундий\nВведите '2'");
         System.out.println("Для завершения теста введите finish");
