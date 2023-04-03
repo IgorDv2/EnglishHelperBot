@@ -93,9 +93,9 @@ public class Phrasal extends CoreTesting{                           //класс
         }
         return 0;
     }
-    @Override
+    /*@Override
     void showQuestion() {                                            //Метод, выводящий вопрос в чат телеграм бота
-        String showActiveQuestion = QuestionArr.get(RandomNumberArrPointer[activeQuestionNumber]); //вроде ничего не делает, разобраться в дальнейшем
+        String showActiveQuestion = (activeQuestionNumber+1) + ".   " + QuestionArr.get(RandomNumberArrPointer[activeQuestionNumber]); //буферная строка для конкатенации
         sendbot.sendMessage(showActiveQuestion);
     }
 

@@ -83,7 +83,7 @@ involved	in
 по моему мнению|	in my opinion
 в конце концов|	in the end
 в будущем|	in the future
-в результате|   result	in
+в результате|	in result
 
 *OFF
 отослать (отправить на замену)|    send	off
@@ -197,7 +197,7 @@ a picture	of
 вне очереди|    out	of order
 полон|    full	of
 несколько|   a number	of
-тип|	a type	of
+тип|    a type	of
 
 *AGAINST
 a game	against

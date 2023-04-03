@@ -181,8 +181,8 @@ public class CoreTesting {
 
         System.out.println("Всего " + ErrorsNumber + " ошибок  в " + getFixedNumberOfQuestions() + " вопросах");
         System.out.println("*Ошибки:\n");
-        sendbot.sendMessage("Всего " + ErrorsNumber + " ошибок  в " + getFixedNumberOfQuestions() + " вопросах\n" +
-                "Ошибки:\n");
+        sendbot.sendMessage("***\nВсего " + ErrorsNumber + " ошибок  в " + getFixedNumberOfQuestions() + " вопросах\n" +
+                "Ошибки:\n***");
 
         for (int i = 0; i < WrongIndex; i++) {                              //выдает на экран все правильные фразы в которых была допущена ошибка
 
@@ -198,7 +198,7 @@ public class CoreTesting {
 
 
         System.out.println("\n*Пропущенные вопросы:\n");
-        sendbot.sendMessage("Пропущенные вопросы:");
+        sendbot.sendMessage("***\nПропущенные вопросы:\n***");
 
         for (int x = 0; x < MissedIndex; x++) {                            //выдает на экран все фразы, которые были пропущены
             buff1 = QuestionArr.get(MissedQuestions.get(x));
@@ -214,7 +214,7 @@ public class CoreTesting {
     }
 
     void showQuestion() {                                            //Метод, выводящий вопрос в чат телеграм бота
-        String showActiveQuestion = QuestionArr.get(RandomNumberArrPointer[activeQuestionNumber]);
+        String showActiveQuestion = (activeQuestionNumber+1) + ".   " + QuestionArr.get(RandomNumberArrPointer[activeQuestionNumber]);
         sendbot.sendMessage(showActiveQuestion);
     }
 

@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="Массив ответов и воропсов теперь считывается из файла 1 раз, при этом порядок вопросов рандомизируется при каждом запуске теста (создание массива и рандомизация теперь не связаны). Методы AnswerWriting() и Question Writing() теперь объединены в один - QuestionAndAnswerWriting() - этот метод содержит единую логику считывания из файлов. Новый метод - TestEnd() выводит результат теста и обнуляет все счетчики, используемые в тестировании. Метод TestEnd() вызывается благодаря разным условиям в разных частях методов, отвечающих за тестирование (PhrasalTesting() и InfGerundTesting). Лишние поля и методы удалены.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+    <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="CoreTesting - массивы были заменены на списки(в методах FileToArray() и TestingSummery)&#10;В остальных классах обновлены комментарии, убран лишний код, добавлены  сеттеры и геттеры.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PhrasalV.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PhrasalV.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CoreTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoreTesting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Phrasal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Phrasal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="e9322cfae72785b3f8bdf4ea609ac76a2e8ba115" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -107,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675281485734</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="CoreTesting - массивы были заменены на списки(в методах FileToArray() и TestingSummery)&#10;В остальных классах обновлены комментарии, убран лишний код, добавлены  сеттеры и геттеры.">
+      <created>1676764474910</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676764474910</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -126,7 +131,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Замена_циклов_на_ArrayList" />
+                        <option value="origin/Замена_массивов_на_списки" />
                       </list>
                     </value>
                   </entry>
@@ -143,6 +148,7 @@
     <MESSAGE value="Phrasal Test корректно работает в телеграм боте" />
     <MESSAGE value="Вынес запись ответа и вопроса из текстового файла в отдельные методы AnswerWriting и QuestionWriting соответственно." />
     <MESSAGE value="Массив ответов и воропсов теперь считывается из файла 1 раз, при этом порядок вопросов рандомизируется при каждом запуске теста (создание массива и рандомизация теперь не связаны). Методы AnswerWriting() и Question Writing() теперь объединены в один - QuestionAndAnswerWriting() - этот метод содержит единую логику считывания из файлов. Новый метод - TestEnd() выводит результат теста и обнуляет все счетчики, используемые в тестировании. Метод TestEnd() вызывается благодаря разным условиям в разных частях методов, отвечающих за тестирование (PhrasalTesting() и InfGerundTesting). Лишние поля и методы удалены." />
-    <option name="LAST_COMMIT_MESSAGE" value="Массив ответов и воропсов теперь считывается из файла 1 раз, при этом порядок вопросов рандомизируется при каждом запуске теста (создание массива и рандомизация теперь не связаны). Методы AnswerWriting() и Question Writing() теперь объединены в один - QuestionAndAnswerWriting() - этот метод содержит единую логику считывания из файлов. Новый метод - TestEnd() выводит результат теста и обнуляет все счетчики, используемые в тестировании. Метод TestEnd() вызывается благодаря разным условиям в разных частях методов, отвечающих за тестирование (PhrasalTesting() и InfGerundTesting). Лишние поля и методы удалены." />
+    <MESSAGE value="CoreTesting - массивы были заменены на списки(в методах FileToArray() и TestingSummery)&#10;В остальных классах обновлены комментарии, убран лишний код, добавлены  сеттеры и геттеры." />
+    <option name="LAST_COMMIT_MESSAGE" value="CoreTesting - массивы были заменены на списки(в методах FileToArray() и TestingSummery)&#10;В остальных классах обновлены комментарии, убран лишний код, добавлены  сеттеры и геттеры." />
   </component>
 </project>
