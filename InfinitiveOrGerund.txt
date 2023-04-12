@@ -4,16 +4,14 @@ avoid	ing
 consider	ing
 delay	ing
 deny	ing
+discuss	ing
 escape	ing
 excuse	ing
 fancy	ing
 finish	ing
 forgive	ing
 imagine	ing
-enjoy	ing
-insist on	ing
 keep	ing
-look forward to	ing
 mention	ing
 mind	ing
 miss	ing
@@ -29,24 +27,156 @@ continue	ing
 report	ing
 resist	ing
 
+*список случаев в которых используется герундий
+после фразовых глаголов с частицей to	ing
+используется в качестве существительного (подлежащего)	ing
+используется в приказательной форме	ing
+в предложениях о предпочтениях после глаголов чувств и восприятий	ing
+в качестве определения после предлога of	ing
+после go в значении физических упражнений	ing
+
+*список выражений после которых используется герундий
+I'm busy	ing
+It's no use	ing
+It's no good	ing
+It's (no) worth	ing
+What's the use of	ing
+Can't help	ing
+There is no point in	ing
+Can't stand	ing
+Be(get) used to	ing
+Have difficulty in	ing
+spend(waste) time	ing
+
+*список предлогов после которых идет герундий
+after	ing
+before	ing
+besides	ing
+by	ing
+in spite of	ing
+instead of	ing
+on	ing
+without	ing
+
+*список примеров устойчивых выражений с предлогами после которых идет герундий
+be ahsamed of	ing
+surprise at	ing
+plan for	ing
+reason for	ing
+interest in	ing
+give up	ing
+be fond of	ing
+be tired of	ing
+be good(bad) at	ing
+idea of	ing
+art of	ing
+fear of	ing
+hope of	ing
+problem of	ing
+
+*список глаголов после которых идет герундий для выражения незавершения процесса
+hear (unfinished)	ing
+listen to (unfinished)	ing
+notice (unfinished)	ing
+see (unfinished)	ing
+watch (unfinished)	ing
+wait (unfinished)	ing
+feel (unfinished)	ing
+
 *Список глаголов после которых идет инфинитив
 advise	to
+afford	to
 agree	to
 appear	to
+choose	to
 decide	to
 expect	to
 hope	to
+help	to/bare
+invite	to
+learn	to
+offer	to
 promise	to
 refuse	to
-want	to
 ask	to
 demand	to
 fail	to
-forget	to
 manage	to
 need	to
 prepare	to
+plan	to
+pretend	to
 seem	to
-try	to
-wait	to
+teach	to
+tell	to
 wish	to
+
+*после прилагательных
+angry	to
+happy	to
+glad	to
+lucky	to
+ready	to
+sorry	to
+pleased	to
+annoyed	to
+
+*после выражений
+would like	to
+would love	to
+would prefer	to
+
+*список случаев в которых используетс полный инфинитив
+в страдательном залоге после глагола make	to
+при обозначении цели назначения	to
+после существительных	to
+после выражений be + first(second, next, last)	to
+после вопросительных слов where, what, who, how, which	to
+после too и enough	to
+for + существительное(местоимение)	to
+конструкции it + be + прилагательное (+ of + object)	to
+
+*список случаев использования bare инфинитива
+после модальных глаголов	bare
+to hear (finished)	bare
+listen to (finished)	bare
+notice (finished)	bare
+see (finished)	bare
+feel (finished)	bare
+wait (finished)	bare
+had better	bare
+would rather	bare
+would sooner	bare
+make + местоимение	bare
+let + местоимение	bare
+see + местоимение	bare
+hear + местоимение	bare
+feel + местоимение	bare
+
+*список глаголов посли которых используется инфинитив или герундий в зависимости от смысла
+forget, remember следует что-то не забыть сделать	to
+forget, remember событие которое не забыть, врезалось в память	ing
+go on(went on) переключится с одного дела на другое	to
+go on(went on) делать что-то непривычное	ing
+mean намереваться что-то сделать	to
+mean дать определение явлению	ing
+try сделать все возможное	to
+try попробовать что-либо	ing
+want желать чего-либо	to
+want требовать, нуждаться	ing
+stop остановиться на время и вернуться к исходному делу	to
+stop прекратить действие полностью	ing
+hate испытывать не удовльствие	to
+hate не любить, то что вынужден делать	ing
+regret высказывать сожаление в формальных письмах	to
+regret сожалеть о событии из прошлого	ing
+recommend если присутствует адресат	to
+recommend если отсутствует адресат	ing
+encourage если присутствует адресат	to
+encourage если отсутствует адресат	ing
+
+begin	to/ing
+like	to/ing
+love	to/ing
+prefer	to/ing
+start	to/ing

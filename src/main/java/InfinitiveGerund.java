@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.StringUtils;
+
 public class InfinitiveGerund extends CoreTesting {                                                             //класс для теста на использование инфинитивов или герундия
     public static void setBotInfAnswer(String botInfAnswer) {
         InfinitiveGerund.botInfAnswer = botInfAnswer;
@@ -34,8 +36,20 @@ public class InfinitiveGerund extends CoreTesting {                             
     int InfGerundTesting(){											//Метод выполняющий одну итерацию тестирования
         String stringBuffer;									    //Буффер для строки
         String activeAnswer;                                        //Буфер строки ответа
+        String activeAnswer1;                                                               //Буфер строки ответа
+        String activeAnswer2;                                                               //буфер для возможного альтернативного ответа
+        String[] result;                                                                    //массив строк для альтернативных ответов
 
         activeAnswer = AnswerArr.get(RandomNumberArrPointer[activeQuestionNumber]);					//в буфер помещаются строки, соответствующие случайному символу
+       if (activeAnswer.contains("/")) {                                                   //если активная строка содержит символ "/"
+            result = StringUtils.split(activeAnswer, "/");                  //то символы до нее составляют один из альтернативных ответов
+            activeAnswer1 = result[0];                                                  //а символы после - другой
+            activeAnswer2 = result[1];                                                  //в целом этот блок - главное и единственное отличие от InfGerundTesting() - ТРЕБУЕТСЯ РЕФАКТОРИНГ!
+            typeCommand = checkAnswer(getBotInfAnswer(), activeAnswer1, activeAnswer2);  //в этом случае проверка идет с любым из ответов
+        }
+        else
+
+
         typeCommand = checkAnswer(getBotInfAnswer(), activeAnswer);	                                //сверка введенного ответа с правильным ответом
 
         if(typeCommand == 0){

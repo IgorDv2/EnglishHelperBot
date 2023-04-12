@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="CoreTesting - массивы были заменены на списки(в методах FileToArray() и TestingSummery)&#10;В остальных классах обновлены комментарии, убран лишний код, добавлены  сеттеры и геттеры.">
+    <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="Обновил базу по инфинитивам и герундию&#10;Исправлено парочка опечаток.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhrasalV.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PhrasalV.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoreTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoreTesting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Phrasal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Phrasal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InfinitiveOrGerund.txt" beforeDir="false" afterPath="$PROJECT_DIR$/InfinitiveOrGerund.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +17,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="e9322cfae72785b3f8bdf4ea609ac76a2e8ba115" />
+        <entry key="$PROJECT_DIR$" value="37c27495233590f6631bb1117889e4f68f1af538" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -112,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676764474910</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Обновил базу по инфинитивам и герундию&#10;Исправлено парочка опечаток.">
+      <created>1681327538534</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681327538534</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -131,7 +137,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/Замена_массивов_на_списки" />
+                        <option value="HEAD" />
                       </list>
                     </value>
                   </entry>
@@ -149,6 +155,7 @@
     <MESSAGE value="Вынес запись ответа и вопроса из текстового файла в отдельные методы AnswerWriting и QuestionWriting соответственно." />
     <MESSAGE value="Массив ответов и воропсов теперь считывается из файла 1 раз, при этом порядок вопросов рандомизируется при каждом запуске теста (создание массива и рандомизация теперь не связаны). Методы AnswerWriting() и Question Writing() теперь объединены в один - QuestionAndAnswerWriting() - этот метод содержит единую логику считывания из файлов. Новый метод - TestEnd() выводит результат теста и обнуляет все счетчики, используемые в тестировании. Метод TestEnd() вызывается благодаря разным условиям в разных частях методов, отвечающих за тестирование (PhrasalTesting() и InfGerundTesting). Лишние поля и методы удалены." />
     <MESSAGE value="CoreTesting - массивы были заменены на списки(в методах FileToArray() и TestingSummery)&#10;В остальных классах обновлены комментарии, убран лишний код, добавлены  сеттеры и геттеры." />
-    <option name="LAST_COMMIT_MESSAGE" value="CoreTesting - массивы были заменены на списки(в методах FileToArray() и TestingSummery)&#10;В остальных классах обновлены комментарии, убран лишний код, добавлены  сеттеры и геттеры." />
+    <MESSAGE value="Обновил базу по инфинитивам и герундию&#10;Исправлено парочка опечаток." />
+    <option name="LAST_COMMIT_MESSAGE" value="Обновил базу по инфинитивам и герундию&#10;Исправлено парочка опечаток." />
   </component>
 </project>

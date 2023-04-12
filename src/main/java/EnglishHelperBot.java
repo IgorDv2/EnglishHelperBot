@@ -27,8 +27,8 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
     private static Update updateBuffer;                                 //Буфер для апдейтов чата
     private static String answerToBot;                                  //Буфер для строки ввода пользователя
 
-    private Phrasal case1 = new Phrasal("C:\\Users\\Oddler\\IdeaProjects\\EnglishHelperBot\\PhrasalV.txt");                                //РАЗОБРАТЬСЯ, стоит ли делать final объекты и как это сделать
-    private InfinitiveGerund case2 = new InfinitiveGerund("C:\\Users\\Oddler\\IdeaProjects\\EnglishHelperBot\\InfinitiveOrGerund.txt");
+    private Phrasal case1 = new Phrasal("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\PhrasalV.txt");                                //РАЗОБРАТЬСЯ, стоит ли делать final объекты и как это сделать
+    private InfinitiveGerund case2 = new InfinitiveGerund("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\InfinitiveOrGerund.txt");
 
     public EnglishHelperBot() throws IOException {
     }
