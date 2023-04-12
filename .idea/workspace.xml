@@ -5,14 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="Обновил базу по инфинитивам и герундию&#10;Исправлено парочка опечаток.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Articles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/BotLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InfinitiveOrGerund.txt" beforeDir="false" afterPath="$PROJECT_DIR$/InfinitiveOrGerund.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -118,8 +127,26 @@
       <option name="project" value="LOCAL" />
       <updated>1681327538534</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Обновил базу по инфинитивам и герундию&#10;Исправлено парочка опечаток.">
+      <created>1681328594042</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681328594042</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -137,7 +164,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="HEAD" />
+                        <option value="Добавление_новых_модулей_по_предлогам_и_артиклям" />
                       </list>
                     </value>
                   </entry>

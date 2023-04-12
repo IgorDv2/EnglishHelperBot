@@ -24,14 +24,16 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
     public static int menu = 0;                                        //Переменная для управления меню выбора
 
     private static long chat_id;
-    private static Update updateBuffer;                                 //Буфер для апдейтов чата
+    public static Update updateBuffer;                                 //Буфер для апдейтов чата
     private static String answerToBot;                                  //Буфер для строки ввода пользователя
 
     private Phrasal case1 = new Phrasal("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\PhrasalV.txt");                                //РАЗОБРАТЬСЯ, стоит ли делать final объекты и как это сделать
     private InfinitiveGerund case2 = new InfinitiveGerund("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\InfinitiveOrGerund.txt");
 
     public EnglishHelperBot() throws IOException {
+
     }
+    BotLogic botlogic = new BotLogic();
 
     public void Start() throws TelegramApiException{                                //Подключение к боту
         TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
@@ -53,16 +55,23 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
         if (updateBuffer.hasMessage()) {
             chat_id = updateBuffer.getMessage().getChatId();
             answerToBot = updateBuffer.getMessage().getText();
-
             try {
-                BotLogic();                                                          //Метод с командами чату и логикой для тестов
+                botlogic.doTheThing(answerToBot);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            if(EnglishHelperBot.getMenu()==0)
+                botlogic.setMenu("main");
+            /*try {
+                BotLogic();                                                          //Метод с командами чату и логикой для тестов
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }*/
+
         }
     }
 
-    public void BotLogic() throws IOException {                                       //ужасный костылесипед, выполняющий функцию меню при запросе сообщения ботом.
+    /*public void BotLogic() throws IOException {                                       //ужасный костылесипед, выполняющий функцию меню при запросе сообщения ботом.
         if(getMenu() == 0) {                                                          //стартовое меню
             switch (answerToBot) {
                 case "/help":
@@ -70,7 +79,7 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
                             "Для проведения теста введите /test");
                     break;
                 case "/test":                                                         //запускает тест
-                    StartTesting();                                                   //Метод для дублирования шапки текста в консоль
+                    //StartTesting();                                                   //Метод для дублирования шапки текста в консоль
                     sendMessage("Для проведения теста по Phrasal verbs, Prepositional phrases, Word patterns Введите '1'\n"+
                             "Для проведения теста - Инфинитив или Герундий Введите '2'\n"+
                             "Для завершения теста введите /finish\n"+
@@ -151,7 +160,7 @@ public  class EnglishHelperBot extends TelegramLongPollingBot {
                 System.out.println("Запрос окончен");
             }
         }
-    }
+    }*/
 
     public void sendMessage(String messageText) {                   //Общий метод для отображения сообщений ботом
         SendMessage message = new SendMessage();
