@@ -103,7 +103,7 @@ public class CoreTesting {
         }
 
         for (; ; ) {                                                                    //цикл работает до тех пор, пока не будет сгенерированно количество чисел равное количеству вопросов в тесте
-            RandBuff = secureRandom.nextInt(QuestionNumber - 1);
+            RandBuff = secureRandom.nextInt(QuestionNumber);
 
             if (nonReccurentCheckArr[RandBuff] == -1) {                                //если свежесгенерированное число еще не использованно, записываем его в массив
                 randomNumbersArr[x] = RandBuff;
@@ -111,9 +111,14 @@ public class CoreTesting {
                 x++;
             }
 
-            if (x == QuestionNumber - 1) break;
+            if (x == QuestionNumber) break;
 
         }
+
+        for(int i=0; i<arrlength;i++){
+            System.out.println(randomNumbersArr[i]);
+        }
+
         return 0;
     }
 
