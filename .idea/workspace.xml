@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="Обновил базу по инфинитивам и герундию&#10;Исправлено парочка опечаток.">
+    <list default="true" id="e043dfd7-72f1-4ede-b555-2ba16603edac" name="Changes" comment="Вынес в отдельный класс BotLogic все условные конструкции связанные с посылаемыми сообщениями. (В процессе возникли костыли) Например костыль в CoreTesting - для успешного выхода из цикла итераций функции теста пришлось пользоваться статической переменной menu в EnglishHelperBot стоит окончательно с этим разобраться. BotLogic тоже неидеален, возможно стоит разбить на несколько подклассов.">
       <change afterPath="$PROJECT_DIR$/src/main/java/Articles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/BotLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BotLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BotLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CoreTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoreTesting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EnglishHelperBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/InfinitiveGerund.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681328594042</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Вынес в отдельный класс BotLogic все условные конструкции связанные с посылаемыми сообщениями. (В процессе возникли костыли) Например костыль в CoreTesting - для успешного выхода из цикла итераций функции теста пришлось пользоваться статической переменной menu в EnglishHelperBot стоит окончательно с этим разобраться. BotLogic тоже неидеален, возможно стоит разбить на несколько подклассов.">
+      <created>1681337223985</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1681337223986</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -183,6 +190,7 @@
     <MESSAGE value="Массив ответов и воропсов теперь считывается из файла 1 раз, при этом порядок вопросов рандомизируется при каждом запуске теста (создание массива и рандомизация теперь не связаны). Методы AnswerWriting() и Question Writing() теперь объединены в один - QuestionAndAnswerWriting() - этот метод содержит единую логику считывания из файлов. Новый метод - TestEnd() выводит результат теста и обнуляет все счетчики, используемые в тестировании. Метод TestEnd() вызывается благодаря разным условиям в разных частях методов, отвечающих за тестирование (PhrasalTesting() и InfGerundTesting). Лишние поля и методы удалены." />
     <MESSAGE value="CoreTesting - массивы были заменены на списки(в методах FileToArray() и TestingSummery)&#10;В остальных классах обновлены комментарии, убран лишний код, добавлены  сеттеры и геттеры." />
     <MESSAGE value="Обновил базу по инфинитивам и герундию&#10;Исправлено парочка опечаток." />
-    <option name="LAST_COMMIT_MESSAGE" value="Обновил базу по инфинитивам и герундию&#10;Исправлено парочка опечаток." />
+    <MESSAGE value="Вынес в отдельный класс BotLogic все условные конструкции связанные с посылаемыми сообщениями. (В процессе возникли костыли) Например костыль в CoreTesting - для успешного выхода из цикла итераций функции теста пришлось пользоваться статической переменной menu в EnglishHelperBot стоит окончательно с этим разобраться. BotLogic тоже неидеален, возможно стоит разбить на несколько подклассов." />
+    <option name="LAST_COMMIT_MESSAGE" value="Вынес в отдельный класс BotLogic все условные конструкции связанные с посылаемыми сообщениями. (В процессе возникли костыли) Например костыль в CoreTesting - для успешного выхода из цикла итераций функции теста пришлось пользоваться статической переменной menu в EnglishHelperBot стоит окончательно с этим разобраться. BotLogic тоже неидеален, возможно стоит разбить на несколько подклассов." />
   </component>
 </project>

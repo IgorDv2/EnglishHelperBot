@@ -21,7 +21,7 @@ public class BotLogic {
     private Phrasal case1 = new Phrasal("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\PhrasalV.txt");                                //РАЗОБРАТЬСЯ, стоит ли делать final объекты и как это сделать
     private InfinitiveGerund case2 = new InfinitiveGerund("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\InfinitiveOrGerund.txt");
 
-
+    private Articles case3 = new Articles("C:\\Users\\Odd\\IdeaProjects\\EnglishHelperBot\\Articles.txt");
 
     public int doTheThing(String messege) throws IOException {
         switch(getMenu()){
@@ -40,6 +40,9 @@ public class BotLogic {
             case "InfiniteGerund":
                 InfiniteGerundTestIteration(messege);
                 break;
+            case "Articles":
+                ArticleTestIteration(messege);
+                break;
         }
         return 0;
     }
@@ -52,6 +55,7 @@ public class BotLogic {
             case "/test":                                                         //запускает тест
                 sendbot.sendMessage("Для проведения теста по Phrasal verbs, Prepositional phrases, Word patterns Введите '1'\n"+
                         "Для проведения теста - Инфинитив или Герундий Введите '2'\n"+
+                        "Для проведения теста - на знание артиклей Введите '3'\n"+
                         "Для завершения теста введите /finish\n"+
                         "Чтобы задать количество вопросов в тесте введите /numberQ");
                 setMenu("testing type menu");                                                         //При запуске теста происходит считывание других комманд
@@ -88,6 +92,17 @@ public class BotLogic {
                 case2.Randomize();                          //создается случайный порядок вопросов
                 case2.StartTest();                          //Отображается шапка с текстом для начала теста
                 case2.showQuestion();                       //Отображается первый вопрос
+                break;
+            case "3":
+                setMenu("Articles");                                     //При запуске теста
+                if (Articles.getIsArrayDone() == false) {
+                    case3.setTestingType("Articles");
+                    case3.FileToArray();                        //Создается список вопросов и ответов на основе текстового файла
+                    Articles.setIsArrayDone(true);
+                }
+                case3.Randomize();                          //создается случайный порядок вопросов
+                case3.StartTest();                          //Отображается шапка с текстом для начала теста
+                case3.showQuestion();                       //Отображается первый вопрос
                 break;
             case "/finish":
                 setMenu("main");
@@ -134,6 +149,17 @@ public class BotLogic {
         if(EnglishHelperBot.updateBuffer.hasMessage()) {                         //При каждом апдейте с запущенным тестом
             InfinitiveGerund.setBotInfAnswer(answer);
             case2.InfGerundTesting();                           //Метод тестирования совершает одну итерацию
+        }
+
+        return 0;
+    }
+
+    private int ArticleTestIteration(String answer){
+        if(CoreTesting.getFixedNumberOfQuestions()>case3.QuestionNumber)
+            CoreTesting.setFixedNumberOfQuestions(case3.QuestionNumber);
+        if(EnglishHelperBot.updateBuffer.hasMessage()) {                         //При каждом апдейте с запущенным тестом
+            Articles.setBotArtAnswer(answer);
+            case3.ArticlesTesting();                             //Метод тестирования совершает одну итерацию
         }
 
         return 0;
